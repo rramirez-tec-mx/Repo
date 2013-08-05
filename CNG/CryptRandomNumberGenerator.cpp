@@ -2,7 +2,7 @@
 #include "CryptRandomNumberGenerator.h"
 #include "StringHelper.h"
 #include <string>
-
+#include <vector>
 using namespace std;
 
 CryptRandomNumberGenerator::CryptRandomNumberGenerator(void)
@@ -20,24 +20,18 @@ wstring CryptRandomNumberGenerator::Generate(wstring algType, int lengthRandomBy
 	StringHelper stringHelper;
 	
 	ULONG cbBuffer = lengthRandomByteArray;;
-	PUCHAR pbBuffer = NULL;
+	vector<UCHAR> pbBuffer;
 	ULONG dwFlags = BCRYPT_RNG_USE_ENTROPY_IN_BUFFER;;
 	NTSTATUS res;
 	wstring resultRandomString;
 	
 	res = BCryptOpenAlgorithmProvider(&hAlgorithm, algType.c_str(), NULL, 0);
 
-	pbBuffer = new UCHAR[cbBuffer];
-	res = BCryptGenRandom(hAlgorithm, pbBuffer, cbBuffer, dwFlags);
+	pbBuffer.resize(cbBuffer);
+	res = BCryptGenRandom(hAlgorithm, &pbBuffer[0], cbBuffer, dwFlags);
 	res = BCryptCloseAlgorithmProvider(hAlgorithm, 0);
 
-	resultRandomString = stringHelper.ConvertByteArrayToString(pbBuffer, cbBuffer);
-
-	if(NULL != pbBuffer)
-	{
-		delete[] pbBuffer;
-		pbBuffer = NULL;
-	}
+	resultRandomString = stringHelper.ConvertByteArrayToString(&pbBuffer[0], cbBuffer);
 
 	return resultRandomString;
 }

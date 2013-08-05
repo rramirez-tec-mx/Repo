@@ -40,7 +40,7 @@ TEST_F(CHashingTest, CalculateSHA1Hash)
 	theTimer.Start();
 	hashHex = m_cryptHashOperation.CalcHashInHexForm(m_messageToHash, hashAlgType, digestLength);
 	theTimer.Stop();
-
+	
 	ASSERT_EQ(hashHex,L"c64d3fcde20c5cd03142171e5ac47a87aa3c8ace");
 }
 

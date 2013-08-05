@@ -19,49 +19,28 @@ TEST_F(CryptTest, CryptEncryptWithDESFromHashSecret)
 {
 	
 	PUCHAR resultHash = NULL;
-	BYTE* encryptedRawBYTEData = NULL;	
-	BYTE* decryptedRawBYTEData = NULL;
+	vector<BYTE> encryptedRawBYTEData;	
+	vector<BYTE> decryptedRawBYTEData;
 	wstring cryptAlgType = BCRYPT_DES_ALGORITHM;
 	ULONG lenCypherText=0;
 	wstring passPhrase = L"abbCCC";
 		
-	int sizePlainText = m_plainText.size();
-	BYTE* plainTextRawBYTE = new BYTE[sizePlainText+1];
+	size_t sizePlainText = m_plainText.size();
+	vector<BYTE> plainTextRawBYTE;
+	plainTextRawBYTE.resize(sizePlainText+1);
 	
-	for (int i=0; i<sizePlainText;i++)
+	for (size_t i=0; i<sizePlainText;i++)
 	{
 		plainTextRawBYTE[i] = m_plainText.at(i);
 	}
 	plainTextRawBYTE[sizePlainText] = 0x00;	
 			
-	encryptedRawBYTEData = m_cryptCypherOperation.EncryptData(cryptAlgType, sizePlainText, plainTextRawBYTE, lenCypherText, passPhrase);
+	encryptedRawBYTEData = m_cryptCypherOperation.EncryptData(cryptAlgType, sizePlainText, &plainTextRawBYTE[0], lenCypherText, passPhrase);
 	
-	decryptedRawBYTEData = m_cryptCypherOperation.DecryptData(cryptAlgType, lenCypherText, encryptedRawBYTEData, passPhrase);
+	decryptedRawBYTEData = m_cryptCypherOperation.DecryptData(cryptAlgType, lenCypherText, &encryptedRawBYTEData[0], passPhrase);
 		
-	for(int i=0;i<sizePlainText;i++)
+	for(size_t i=0;i<sizePlainText;i++)
 	{
 		ASSERT_EQ(decryptedRawBYTEData[i],m_plainText.at(i));
-	}
-	
-	if(NULL != encryptedRawBYTEData)
-	{
-		delete[] encryptedRawBYTEData;
-		encryptedRawBYTEData = NULL;
-	}
-
-	
-	if(NULL != decryptedRawBYTEData)
-	{
-		delete[] decryptedRawBYTEData;
-		decryptedRawBYTEData = NULL;
-	}
-
-	
-	
-	if(NULL != plainTextRawBYTE)
-	{
-		delete[] plainTextRawBYTE;
-		plainTextRawBYTE = NULL;
-	}
-	
+	}				
 }
