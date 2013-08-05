@@ -13,7 +13,7 @@ CMatlabCompilerTest::~CMatlabCompilerTest(void)
 {
 }
 
-TEST_F(CMatlabCompilerTest, TestSimpleScript) 
+TEST_F(CMatlabCompilerTest, DISABLED_TestSimpleScript) 
 {			
 	CMatlabCompiler matlabCompiler;
 	
