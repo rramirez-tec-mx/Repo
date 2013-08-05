@@ -1,0 +1,11 @@
+#pragma once
+#include "gtest.h"
+class CHashingTest: public ::testing::Test 
+{
+public:
+	CHashingTest(void);
+	~CHashingTest(void);
+public:
+	void CalculateHash();
+};
+

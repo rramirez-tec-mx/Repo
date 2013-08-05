@@ -1,0 +1,15 @@
+#pragma once
+#include <windows.h>
+#include <string>
+
+#define DLL_EXPORT __declspec(dllexport)
+class DLL_EXPORT CCryptHashingOperation
+{
+public:
+	CCryptHashingOperation(void);
+	~CCryptHashingOperation(void);
+
+	PUCHAR CreateHash(std::wstring rgbMsg);
+	std::wstring ConvertHashDigestToString( PUCHAR hashValue, const int digestLength );
+};
+

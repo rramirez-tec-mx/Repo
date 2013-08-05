@@ -1,0 +1,17 @@
+#include "TestNumber.h"
+#include "..\..\CNG\CNG.h"
+
+CTestNumber::CTestNumber(void)
+{
+}
+
+CTestNumber::~CTestNumber(void)
+{
+}
+
+
+TEST(CTestNumber, Test1) 
+{
+	CNG cng;
+	cng.EchhoNumber(2);
+}

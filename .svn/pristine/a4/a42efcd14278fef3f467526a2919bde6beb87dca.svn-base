@@ -1,0 +1,19 @@
+#include "CNGConfigFunctionTest.h"
+#include "..\..\CNG\CNG.h"
+
+CNGConfigFunctionTest::CNGConfigFunctionTest(void)
+{
+}
+
+
+CNGConfigFunctionTest::~CNGConfigFunctionTest(void)
+{
+}
+
+
+TEST(CNGConfigFunctionTest, CheckFipsIsEnabled) 
+{
+	CNG cng;
+	ASSERT_EQ(cng.CheckIfFipsIsEnabled(),0);
+}
+

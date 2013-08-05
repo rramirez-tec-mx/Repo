@@ -1,0 +1,13 @@
+#pragma once
+#include "gtest.h"
+
+class CTestNumber : public ::testing::Test 
+{
+public:
+	CTestNumber(void);
+	~CTestNumber(void);
+private:
+	int Sum(int a, int b);
+
+};
+

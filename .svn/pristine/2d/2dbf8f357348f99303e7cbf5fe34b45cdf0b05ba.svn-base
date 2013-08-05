@@ -1,0 +1,54 @@
+#include "CryptTest.h"
+#include <windows.h>
+#include <iostream>
+
+#include "..\..\GeneralCPP\Timer.h"
+
+using namespace std;
+
+CryptTest::CryptTest(void) : m_messageToCrypt("ciaociaociaocia123123123123123faswasdfasvasdvewqq")
+{
+}
+
+
+CryptTest::~CryptTest(void)
+{
+}
+
+TEST_F(CryptTest, CryptEncryptWithDESFromHashSecret) 
+{		
+	PUCHAR resultHash = NULL;
+		
+	int sizeText = m_messageToCrypt.size();
+	BYTE* plainTextByte = new BYTE[sizeText+1];
+	for (int i=0; i<sizeText;i++)
+	{
+		plainTextByte[i] = m_messageToCrypt.at(i);
+	}
+	plainTextByte[sizeText] = 0x00;
+	wstring cryptAlgType = BCRYPT_DES_ALGORITHM;
+		
+	CTimer theTimer;
+	theTimer.Start();	
+	m_cryptCypherOperation.EncryptData(cryptAlgType, sizeText, plainTextByte);
+	theTimer.Stop();		
+}
+
+TEST_F(CryptTest, CryptEncryptWithAESFromHashSecret) 
+{		
+	PUCHAR resultHash = NULL;
+		
+	int sizeText = m_messageToCrypt.size();
+	BYTE* plainTextByte = new BYTE[sizeText+1];
+	for (int i=0; i<sizeText;i++)
+	{
+		plainTextByte[i] = m_messageToCrypt.at(i);
+	}
+	plainTextByte[sizeText] = 0x00;
+	wstring cryptAlgType = BCRYPT_AES_ALGORITHM;
+		
+	CTimer theTimer;
+	theTimer.Start();	
+	m_cryptCypherOperation.EncryptData(cryptAlgType, sizeText, plainTextByte);
+	theTimer.Stop();		
+}

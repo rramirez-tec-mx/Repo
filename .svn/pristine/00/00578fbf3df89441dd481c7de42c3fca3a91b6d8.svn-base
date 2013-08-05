@@ -1,0 +1,22 @@
+#pragma once
+#include <windows.h>
+#include <string>
+#include <memory>
+
+#define DLL_EXPORT __declspec(dllexport)
+class DLL_EXPORT CCryptHashingOperation
+{
+public:
+	CCryptHashingOperation(void);
+	~CCryptHashingOperation(void);
+
+public:	
+	std::wstring CalcHashInHexForm(std::wstring messageToHash, std::wstring hashAlgType, int digestLength);
+	PUCHAR CalcRawHash(std::wstring messageToHash, std::wstring hashAlgType, int digestLength);
+
+private:
+	std::unique_ptr<BYTE[]> ConvertWStringToArrayOfByte(std::wstring stringToConvert);
+	PUCHAR CreateHash(std::wstring messageToHash, std::wstring hashAlgType);
+	std::wstring ConvertHashDigestToString( PUCHAR hashValue, const int digestLength );
+};
+

@@ -1,0 +1,10 @@
+#pragma once
+#include "gtest.h"
+
+class TestLapack : public ::testing::Test 
+{
+public:
+	TestLapack(void);
+	~TestLapack(void);
+};
+

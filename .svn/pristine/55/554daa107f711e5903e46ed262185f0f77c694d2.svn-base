@@ -1,0 +1,10 @@
+#pragma once
+#include "gtest.h"
+
+class CNGConfigFunctionTest : public ::testing::Test 
+{
+public:
+	CNGConfigFunctionTest(void);
+	~CNGConfigFunctionTest(void);
+};
+

@@ -1,0 +1,17 @@
+#include "TestLapack.h"
+#include "..\..\CNG\LapackClass.h"
+
+TestLapack::TestLapack(void)
+{
+}
+
+
+TestLapack::~TestLapack(void)
+{
+}
+
+TEST(TestLapack, testCalcMatrix)
+{
+	LapackClass lapackClass;
+	lapackClass.calcMatrix();
+}

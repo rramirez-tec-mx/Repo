@@ -1,0 +1,57 @@
+// CNG.cpp : Defines the entry point for the console application.
+//
+#include "stdafx.h"
+#include <windows.h>
+#include <bcrypt.h>
+#include "CNG.h"
+#include <iostream>
+
+#ifndef NT_SUCCESS
+#   define NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
+#endif
+
+
+
+using namespace std;
+
+CNG::CNG(void)
+{
+}
+
+CNG::~CNG(void)
+{
+}
+
+int CNG::EchhoNumber(int number)
+{
+	return number;
+}
+
+int CNG::CheckIfFipsIsEnabled()
+{
+	BOOLEAN fipsIsEnabled=50;
+	NTSTATUS result;
+	result = BCryptGetFipsAlgorithmMode(&fipsIsEnabled);
+	if(result < 0)
+	{
+		printf("Errore in chiamata a BCryptGetFipsAlgorithmMode\n");
+	}
+	return (int)fipsIsEnabled;
+}
+
+void CNG::EnumCrypyProvider(LPCWSTR pszAlgId, BCRYPT_PROVIDER_NAME ** ppImplList, ULONG & pImplCount)
+{
+	ULONG dwFlags=0;
+	NTSTATUS result;
+	ULONG pImplCount1=0;	
+	result = BCryptEnumProviders(pszAlgId, &pImplCount1, ppImplList, dwFlags);
+	if(result < 0)
+	{
+		printf("Errore in chiamata a BCryptEnumProviders\n");
+	}
+	else
+	{
+		pImplCount = pImplCount1;
+	}
+
+}

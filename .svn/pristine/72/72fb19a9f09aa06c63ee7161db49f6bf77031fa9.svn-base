@@ -1,0 +1,110 @@
+#include "StdAfx.h"
+#include "CryptCypherOperation.h"
+#include "CryptHashingOperation.h"
+#include <string>
+
+using namespace std;
+
+CryptCypherOperation::CryptCypherOperation(void)
+{
+}
+
+
+CryptCypherOperation::~CryptCypherOperation(void)
+{
+}
+
+
+BYTE* CryptCypherOperation::EncryptData(wstring cryptAlgType, const int lenPlainText, BYTE *plainText, ULONG & lenCypherText)
+{
+	NTSTATUS ret;
+	BCRYPT_ALG_HANDLE hAlgorithm;
+	BCRYPT_KEY_HANDLE hKey = NULL;
+	PUCHAR pbInput = NULL;
+	ULONG cbInput = 0;
+	VOID *pPaddingInfo = NULL; //NULL nel caso di cifratura simmetrica
+	PUCHAR pbIV = NULL; //NULL, opzionale
+	ULONG cbIV = 0;	
+	ULONG cbOutput = 0;	
+	ULONG dwFlags = 0;
+
+	PUCHAR pbKeyObject = NULL;
+	ULONG cbKeyObject = 0;
+	PUCHAR pbSecret = NULL;
+	ULONG cbSecret = 0;
+
+	CCryptHashingOperation hashingOperation;
+			
+	wstring hashAlgTypeForSecret = BCRYPT_MD5_ALGORITHM;
+	int digestLength = 16;
+
+
+	ret = BCryptOpenAlgorithmProvider(&hAlgorithm, cryptAlgType.c_str(), NULL, 0);
+
+	pbSecret = hashingOperation.CalcRawHash(L"abb", hashAlgTypeForSecret, digestLength);
+	cbSecret = digestLength;
+
+	ret = BCryptGenerateSymmetricKey(hAlgorithm, &hKey, pbKeyObject, cbKeyObject, pbSecret, cbSecret, dwFlags);
+
+	ret = BCryptEncrypt(hKey, plainText, lenPlainText, NULL, NULL, 0, NULL, 0, &lenCypherText, BCRYPT_BLOCK_PADDING);
+	
+	BYTE * cypherText = new BYTE[lenCypherText];
+	DWORD cbData = 0;
+	ret = BCryptEncrypt(hKey, plainText, lenPlainText, NULL, NULL, 0, cypherText, lenCypherText, &cbData, BCRYPT_BLOCK_PADDING);
+	
+	ret = BCryptDestroyKey(hKey);
+
+	if(NULL != pbSecret)
+	{
+		delete[] pbSecret;
+		pbSecret = NULL;
+	}
+
+	return cypherText;
+
+
+}
+
+BYTE* CryptCypherOperation::DecryptData(wstring cryptAlgType, const int lenCypherText, BYTE *cypherText)
+{
+	NTSTATUS ret;
+	BCRYPT_ALG_HANDLE hAlgorithm;
+	BCRYPT_KEY_HANDLE hKey = NULL;
+	PUCHAR pbInput = NULL;
+	ULONG cbInput = 0;
+	VOID *pPaddingInfo = NULL; //NULL nel caso di cifratura simmetrica
+	PUCHAR pbIV = NULL; //NULL, opzionale
+	ULONG cbIV = 0;	
+	ULONG cbOutput = 0;
+	ULONG dwFlags = 0;
+
+	PUCHAR pbKeyObject = NULL;
+	ULONG cbKeyObject = 0;
+	PUCHAR pbSecret = NULL;
+	ULONG cbSecret = 0;
+	ULONG lenPlainText;
+
+	CCryptHashingOperation hashingOperation;
+			
+	wstring hashAlgTypeForSecret = BCRYPT_MD5_ALGORITHM;
+	int digestLength = 16;
+
+
+	ret = BCryptOpenAlgorithmProvider(&hAlgorithm, cryptAlgType.c_str(), NULL, 0);
+
+	pbSecret = hashingOperation.CalcRawHash(L"abb", hashAlgTypeForSecret, digestLength);
+	cbSecret = digestLength;
+
+	ret = BCryptGenerateSymmetricKey(hAlgorithm, &hKey, pbKeyObject, cbKeyObject, pbSecret, cbSecret, dwFlags);
+
+	ret = BCryptDecrypt(hKey, cypherText, lenCypherText, NULL, NULL, 0, NULL, 0, &lenPlainText, BCRYPT_BLOCK_PADDING);
+
+	BYTE * decypherText = new BYTE[lenPlainText+1];
+
+	ret = BCryptDecrypt(hKey, cypherText, lenCypherText, NULL, NULL, 0, decypherText, lenPlainText, &lenPlainText, BCRYPT_BLOCK_PADDING);
+	decypherText[lenCypherText] = 0x00;
+
+	ret = BCryptDestroyKey(hKey);
+
+	return decypherText;
+}

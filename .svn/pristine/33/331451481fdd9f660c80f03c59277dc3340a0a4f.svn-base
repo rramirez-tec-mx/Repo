@@ -1,0 +1,10 @@
+#pragma once
+#include "gtest.h"
+
+class CGeneralCPPTest: public ::testing::Test 
+{
+public:
+	CGeneralCPPTest(void);
+	~CGeneralCPPTest(void);
+};
+

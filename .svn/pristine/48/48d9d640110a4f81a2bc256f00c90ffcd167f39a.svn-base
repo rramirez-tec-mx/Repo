@@ -1,0 +1,146 @@
+#include "StdAfx.h"
+#include "CryptHashingOperation.h"
+#include <string>
+#include <iostream>
+#include <sstream>
+#include <memory>
+
+using namespace std;
+
+CCryptHashingOperation::CCryptHashingOperation(void)
+{
+}
+
+
+CCryptHashingOperation::~CCryptHashingOperation(void)
+{
+}
+
+wstring CCryptHashingOperation::CalcHash(wstring messageToHash, wstring hashAlgType, int digestLength)
+{
+	PUCHAR resultHash;
+	resultHash = CreateHash(messageToHash, hashAlgType);
+	wstring resultHashToHex = ConvertHashDigestToString(resultHash,digestLength);
+
+	if (NULL != resultHash)
+	{
+		delete[] resultHash;
+	}
+
+	return resultHashToHex;
+}
+
+
+PUCHAR CCryptHashingOperation::CreateHash(wstring messageToHash, wstring hashAlgType)
+{
+	BCRYPT_ALG_HANDLE phAlgorithm;
+	DWORD dwFlags = 0;
+
+	BCRYPT_HASH_HANDLE hHash = NULL;
+
+	PUCHAR pbHashObject = NULL;
+    PBYTE pbHash = NULL;
+
+	DWORD cbHashObject = 0;
+	DWORD cbData = 0;
+	DWORD cbHash = 0;
+	NTSTATUS res;
+	
+	unique_ptr<BYTE> pbBufferCast = ConvertWStringToArrayOfByte(messageToHash);
+	int lenBuffer = messageToHash.size();
+
+
+	res = BCryptOpenAlgorithmProvider(&phAlgorithm, hashAlgType.c_str(), NULL, 0);
+	
+	 //calculate the size of the buffer to hold the hash object
+    res = BCryptGetProperty(phAlgorithm, BCRYPT_OBJECT_LENGTH, (PBYTE)&cbHashObject, sizeof(DWORD), &cbData, 0);
+
+	//allocate the hash object on the heap
+   
+    pbHashObject = new UCHAR[cbHashObject];
+
+    if(NULL == pbHashObject)
+    {       
+		wprintf(L"**** memory allocation failed\n");
+    }
+
+   //calculate the length of the hash
+    res = BCryptGetProperty(phAlgorithm, BCRYPT_HASH_LENGTH, (PBYTE)&cbHash, sizeof(DWORD), &cbData, 0);
+    
+    //allocate the hash buffer on the heap
+    pbHash = new UCHAR[cbHash];
+    if(NULL == pbHash)
+    {
+        wprintf(L"**** memory allocation failed\n");
+    }
+
+	res = BCryptCreateHash(phAlgorithm, &hHash, pbHashObject,cbHashObject,NULL,0,0);
+	    
+	res = BCryptHashData(hHash, pbBufferCast.get(),lenBuffer,0);
+    
+    //close the hash
+    res = BCryptFinishHash(hHash, pbHash, cbHash, 0);
+
+	
+    if(phAlgorithm)
+    {
+        BCryptCloseAlgorithmProvider(phAlgorithm,0);
+    }
+
+    if (hHash)    
+    {
+        BCryptDestroyHash(hHash);
+    }
+
+    if(pbHashObject)
+    {
+        //HeapFree(GetProcessHeap(), 0, pbHashObject);
+		delete[] pbHashObject;
+    }
+
+	if(pbBufferCast)
+	{
+		pbBufferCast.release();
+	}
+
+    return pbHash;
+
+}
+
+wstring CCryptHashingOperation::ConvertHashDigestToString( PUCHAR hashValue, const int digestLength )
+{
+    
+        wstring strDigest;
+		
+        for ( int i = 0; i < digestLength; i++ )
+        {
+
+           wstringstream strHexByte;
+
+		   int numberConverted = (int)hashValue[i];
+
+			if(numberConverted < 16)
+				strHexByte << "0" << std::hex << hashValue[i];
+			else
+				strHexByte << std::hex << hashValue[i];
+			
+            strDigest += strHexByte.str();
+        }
+    		
+		return strDigest;
+}
+
+unique_ptr<BYTE[]> CCryptHashingOperation::ConvertWStringToArrayOfByte(wstring stringToConvert)
+{
+	int lenBuffer = stringToConvert.size();
+	
+	unique_ptr<BYTE[]> arrayOfByte(new BYTE(lenBuffer));
+		
+	//convert text into BYTE 
+	for(int i=0;i<(int)stringToConvert.size();i++)
+	{
+		arrayOfByte[i] = (BYTE)stringToConvert.at(i);
+	}
+	return arrayOfByte;
+}
+

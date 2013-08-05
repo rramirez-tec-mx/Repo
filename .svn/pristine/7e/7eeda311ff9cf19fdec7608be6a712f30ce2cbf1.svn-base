@@ -1,0 +1,19 @@
+﻿Build started 08/12/2011 08:57:03.
+     1>Project "J:\Progetti\C++\gtest-1.6.0\msvc\gtest_main.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "gtest/Release\gtest_main\gtest_main.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         J:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I.. /I..\include /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _LIB /D _MBCS /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"gtest/Release\gtest_main\\" /Fd"gtest/Release\gtest_main\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\gtest_main.cc
+         gtest_main.cc
+       Lib:
+         J:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"gtest/Release\gtest_main.lib" /NOLOGO gtest/Release\gtest_main\gtest_main.obj
+         gtest_main.vcxproj -> J:\Progetti\C++\gtest-1.6.0\msvc\gtest/Release\gtest_main.lib
+       FinalizeBuildStatus:
+         Deleting file "gtest/Release\gtest_main\gtest_main.unsuccessfulbuild".
+         Touching "gtest/Release\gtest_main\gtest_main.lastbuildstate".
+     1>Done Building Project "J:\Progetti\C++\gtest-1.6.0\msvc\gtest_main.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.87

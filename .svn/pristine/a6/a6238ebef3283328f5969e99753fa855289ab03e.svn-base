@@ -1,0 +1,30 @@
+#include "TestLapack.h"
+#include "..\..\CNG\LapackClass.h"
+#include <vector>
+
+using namespace std;
+
+TestLapack::TestLapack(void)
+{
+}
+
+
+TestLapack::~TestLapack(void)
+{
+}
+
+TEST(TestLapack, testCalcMatrix)
+{
+	LapackClass lapackClass;
+	lapackClass.calcMatrix();
+}
+
+TEST(TestLapack, testCalcMatrix2)
+{
+	LapackClass lapackClass;
+
+	vector<double> c;
+	c.assign(3,0);
+	lapackClass.calcMatrix2(&c[0]);
+	
+}
