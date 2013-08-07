@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatlabCompiler", "..\Matlab
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AmpProve", "..\AmpProve\AmpProve.vcxproj", "{D211CC58-465E-4C3F-9BF3-5F7460D456AB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QoS2", "..\QoS2\QoS2.vcxproj", "{91B956B4-C683-4B62-BD7E-185F3229DD2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -43,6 +45,10 @@ Global
 		{D211CC58-465E-4C3F-9BF3-5F7460D456AB}.Debug|Win32.Build.0 = Debug|Win32
 		{D211CC58-465E-4C3F-9BF3-5F7460D456AB}.Release|Win32.ActiveCfg = Release|Win32
 		{D211CC58-465E-4C3F-9BF3-5F7460D456AB}.Release|Win32.Build.0 = Release|Win32
+		{91B956B4-C683-4B62-BD7E-185F3229DD2C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{91B956B4-C683-4B62-BD7E-185F3229DD2C}.Debug|Win32.Build.0 = Debug|Win32
+		{91B956B4-C683-4B62-BD7E-185F3229DD2C}.Release|Win32.ActiveCfg = Release|Win32
+		{91B956B4-C683-4B62-BD7E-185F3229DD2C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -85,8 +85,10 @@
     <ClInclude Include="CryptTest.h" />
     <ClInclude Include="GeneralCPPTest.h" />
     <ClInclude Include="HashingTest.h" />
+    <ClInclude Include="KeyStorageManagerTest.h" />
     <ClInclude Include="MatlabCompilerTest.h" />
     <ClInclude Include="MemoryLeakListener.h" />
+    <ClInclude Include="QoS2Test.h" />
     <ClInclude Include="RNGTest.h" />
     <ClInclude Include="Starter.h" />
     <ClInclude Include="TestLapack.h" />
@@ -96,8 +98,10 @@
     <ClCompile Include="CryptTest.cpp" />
     <ClCompile Include="GeneralCPPTest.cpp" />
     <ClCompile Include="HashingTest.cpp" />
+    <ClCompile Include="KeyStorageManagerTest.cpp" />
     <ClCompile Include="MatlabCompilerTest.cpp" />
     <ClCompile Include="MemoryLeakListener.cpp" />
+    <ClCompile Include="QoS2Test.cpp" />
     <ClCompile Include="RNGTest.cpp" />
     <ClCompile Include="Starter.cpp" />
     <ClCompile Include="TestLapack.cpp" />
@@ -114,6 +118,9 @@
     </ProjectReference>
     <ProjectReference Include="..\..\MatlabCompiler\MatlabCompiler.vcxproj">
       <Project>{a5706fb8-5a08-4642-be6f-2868eac57053}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\QoS2\QoS2.vcxproj">
+      <Project>{91b956b4-c683-4b62-bd7e-185f3229dd2c}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

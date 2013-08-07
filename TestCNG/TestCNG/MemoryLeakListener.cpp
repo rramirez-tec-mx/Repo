@@ -24,9 +24,9 @@ void CMemoryLeakListener::OnTestEnd(const ::testing::TestInfo& test_info)
 
 void CMemoryLeakListener::CheckForMemLeaks(const ::testing::TestInfo& test_info)
 {
-    _CrtMemState memAtEnd;
+    _CrtMemState memAtEnd;memAtEnd;
     _CrtMemCheckpoint( &memAtEnd );
-    _CrtMemState memDiff;
+    _CrtMemState memDiff;memDiff;
     if ( _CrtMemDifference( &memDiff, &memAtStart, &memAtEnd))
 	{
         _CrtMemDumpStatistics( &memDiff );
