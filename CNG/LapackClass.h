@@ -1,9 +1,7 @@
 #pragma once
 #include "Matrix.h"
 #include <vector>
-
-
-#define DLL_EXPORT __declspec(dllexport)
+#include "CNGApi.h"
 
 class DLL_EXPORT LapackClass
 {

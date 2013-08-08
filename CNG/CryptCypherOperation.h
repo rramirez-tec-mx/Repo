@@ -2,8 +2,7 @@
 #include <windows.h>
 #include <string>
 #include <memory>
-#include <vector>
-#define DLL_EXPORT __declspec(dllexport)
+#include "CNGApi.h"
 
 class DLL_EXPORT CryptCypherOperation
 {

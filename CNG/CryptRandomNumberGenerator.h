@@ -1,8 +1,8 @@
 #pragma once
 #include <windows.h>
 #include <string>
+#include "CNGApi.h"
 
-#define DLL_EXPORT __declspec(dllexport)
 
 class DLL_EXPORT CryptRandomNumberGenerator
 {

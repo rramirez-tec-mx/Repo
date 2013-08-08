@@ -1,8 +1,7 @@
 #pragma once
-#include <Windows.h>
 #include <string>
+#include "CNGApi.h"
 
-#define DLL_EXPORT __declspec(dllexport)
 
 class DLL_EXPORT StringHelper
 {

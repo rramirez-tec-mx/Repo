@@ -1,8 +1,6 @@
 #pragma once
-#include <vector>
+#include "CNGApi.h"
 #pragma warning (disable : 4251)
-
-#define DLL_EXPORT __declspec(dllexport)
 
 class DLL_EXPORT CMatrix
 {

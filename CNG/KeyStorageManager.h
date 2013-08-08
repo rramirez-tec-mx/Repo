@@ -1,9 +1,8 @@
 #pragma once
 #include <windows.h>
 #include "Ncrypt.h"
-#include <vector>
+#include "CNGApi.h"
 
-#define DLL_EXPORT __declspec(dllexport)
 
 //MS_KEY_STORAGE_PROVIDER         L"Microsoft Software Key Storage Provider"
 //MS_SMART_CARD_KEY_STORAGE_PROVIDER L"Microsoft Smart Card Key Storage Provider"

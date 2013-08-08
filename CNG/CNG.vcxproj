@@ -95,6 +95,7 @@ copy ..\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationN
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CNG.h" />
+    <ClInclude Include="CNGApi.h" />
     <ClInclude Include="CryptCypherOperation.h" />
     <ClInclude Include="CryptEnumerator.h" />
     <ClInclude Include="CryptHashingOperation.h" />

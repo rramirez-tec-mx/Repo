@@ -25,8 +25,6 @@ TEST_F(CMatlabCompilerTest, DISABLED_TestSimpleScript)
 TEST_F(CMatlabCompilerTest, DISABLED_TestMatlabCompiler2) 
 {			
 	CMatlabCompiler matlabCompiler;
-	
-	
-
+		
 	matlabCompiler.CheckType();
 }

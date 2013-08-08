@@ -1,8 +1,6 @@
 #pragma once
 #include <Windows.h>
-
-#define DLL_EXPORT __declspec(dllexport)
-
+#include "CNGApi.h"
 
 class DLL_EXPORT CNG
 {

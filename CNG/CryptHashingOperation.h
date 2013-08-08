@@ -2,9 +2,8 @@
 #include <windows.h>
 #include <string>
 #include <memory>
-#include <vector>
+#include "CNGApi.h"
 
-#define DLL_EXPORT __declspec(dllexport)
 class DLL_EXPORT CCryptHashingOperation
 {
 public:
