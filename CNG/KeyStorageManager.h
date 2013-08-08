@@ -16,5 +16,9 @@ public:
 
 	void EnumStorageProvider(std::vector<std::wstring> & listOfProvider);
 	NCRYPT_PROV_HANDLE OpenStorageProvider(std::wstring providerName);
+	void CreatePersistedKey(NCRYPT_PROV_HANDLE hProvider, NCRYPT_KEY_HANDLE *phKey, const std::wstring & pszAlgId, const std::wstring & pszKeyName, DWORD dwLegacyKeySpec, DWORD dwFlags);
+	void FinalizePersistedKey(NCRYPT_KEY_HANDLE hKey);
+	void OpenExistingPersistedKey(NCRYPT_PROV_HANDLE hProvider, NCRYPT_KEY_HANDLE *phKey, const std::wstring & pszAlgId, const std::wstring & pszKeyName, DWORD dwLegacyKeySpec, DWORD dwFlags);
+	void DeleteExistingPersistedKey(NCRYPT_KEY_HANDLE hKey, DWORD dwFlags);	
 };
 

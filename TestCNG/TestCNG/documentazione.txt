@@ -1,0 +1,3 @@
+//reference per capire dove vengono salvate le chiavi. Nel test sotto verranno messe in %APPDATA%\Microsoft\Crypto\Keys
+//http://msdn.microsoft.com/en-us/library/windows/desktop/bb204778(v=vs.85).aspx
+//

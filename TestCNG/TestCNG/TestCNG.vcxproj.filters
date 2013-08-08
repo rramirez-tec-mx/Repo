@@ -87,4 +87,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="documentazione.txt" />
+  </ItemGroup>
 </Project>

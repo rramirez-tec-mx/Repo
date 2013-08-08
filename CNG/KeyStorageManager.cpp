@@ -40,3 +40,53 @@ NCRYPT_PROV_HANDLE CKeyStorageManager::OpenStorageProvider(wstring providerName)
 	ret = NCryptOpenStorageProvider(&hProvider, providerName.c_str(), dwFlags);
 	return hProvider;
 }
+
+void CKeyStorageManager::CreatePersistedKey(NCRYPT_PROV_HANDLE hProvider, NCRYPT_KEY_HANDLE *phKey, const wstring & pszAlgId, const wstring & pszKeyName, DWORD dwLegacyKeySpec, DWORD dwFlags)
+{
+	SECURITY_STATUS ret;
+	ret = NCryptCreatePersistedKey(hProvider, phKey, pszAlgId.c_str(), pszKeyName.c_str(), dwLegacyKeySpec, dwFlags);
+	if(ret != FALSE)
+	{
+		char  msgbuf[200];
+		sprintf_s(msgbuf, "CKeyStorageManager::CreatePersistedKey failed. Error: %ld\n", GetLastError());
+		OutputDebugStringA(msgbuf);
+	}
+}
+
+void CKeyStorageManager::FinalizePersistedKey(NCRYPT_KEY_HANDLE hKey)
+{
+	SECURITY_STATUS ret;
+	ret = NCryptFinalizeKey(hKey, 0);
+	if(ret != FALSE)
+	{
+		char  msgbuf[200];
+		sprintf_s(msgbuf, "CKeyStorageManager::CreatePersistedKey failed. Error: %ld\n", GetLastError());
+		OutputDebugStringA(msgbuf);
+	}
+}
+
+
+void CKeyStorageManager::OpenExistingPersistedKey(NCRYPT_PROV_HANDLE hProvider, NCRYPT_KEY_HANDLE *phKey, const wstring & pszAlgId, const wstring & pszKeyName, DWORD dwLegacyKeySpec, DWORD dwFlags)
+{		
+	SECURITY_STATUS ret;
+	ret =  NCryptOpenKey(hProvider, phKey, pszKeyName.c_str(), dwLegacyKeySpec, dwFlags);
+	if(ret != FALSE)
+	{
+		char  msgbuf[200];
+		sprintf_s(msgbuf, "CKeyStorageManager::OpenExistingPersistedKey failed. Error: %ld\n", GetLastError());
+		OutputDebugStringA(msgbuf);
+	}
+}
+
+
+void CKeyStorageManager::DeleteExistingPersistedKey(NCRYPT_KEY_HANDLE hKey, DWORD dwFlags)
+{		
+	SECURITY_STATUS ret;
+	ret =  NCryptDeleteKey(hKey, dwFlags);
+	if(ret != FALSE)
+	{
+		char  msgbuf[200];
+		sprintf_s(msgbuf, "CKeyStorageManager::DeleteExistingPersistedKey failed. Error: %ld\n", GetLastError());
+		OutputDebugStringA(msgbuf);
+	}
+}

@@ -1,5 +1,4 @@
 #pragma once
-#include <windows.h>
 #include <string>
 #include <memory>
 #include "CNGApi.h"
@@ -10,9 +9,9 @@ public:
 	CryptCypherOperation(void);
 	~CryptCypherOperation(void);
 
-	std::vector<BYTE> EncryptData(std::wstring cryptAlgType, const int lenPlainText, BYTE* plainText, ULONG & lenCypherText, std::wstring passPhrase);
-	std::vector<BYTE> DecryptData(std::wstring cryptAlgType, const int lenCypherText, BYTE *cypherText, std::wstring passPhrase);
+	std::vector<unsigned char> EncryptData(std::wstring cryptAlgType, const int lenPlainText, unsigned char* plainText, unsigned long & lenCypherText, std::wstring passPhrase);
+	std::vector<unsigned char> DecryptData(std::wstring cryptAlgType, const int lenCypherText, unsigned char *cypherText, std::wstring passPhrase);
 private:
-	BCRYPT_KEY_HANDLE GenerateSimmetricKeyFromPassPhrase(std::wstring cryptAlgTypeForSecret, int digestLength, std::wstring passPhrase, std::wstring cryptAlgTypeForEncryption);
+	void * GenerateSimmetricKeyFromPassPhrase(std::wstring cryptAlgTypeForSecret, int digestLength, std::wstring passPhrase, std::wstring cryptAlgTypeForEncryption);
 };
 
