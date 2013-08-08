@@ -31,3 +31,12 @@ void CKeyStorageManager::EnumStorageProvider(vector<wstring> & listOfProvider)
 	
 	NCryptFreeBuffer(ppProviderList);		
 }
+
+NCRYPT_PROV_HANDLE CKeyStorageManager::OpenStorageProvider(wstring providerName)
+{
+	SECURITY_STATUS ret;
+	DWORD dwFlags = 0;
+	NCRYPT_PROV_HANDLE hProvider;
+	ret = NCryptOpenStorageProvider(&hProvider, providerName.c_str(), dwFlags);
+	return hProvider;
+}

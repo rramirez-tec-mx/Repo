@@ -22,7 +22,7 @@ TEST_F(CMatlabCompilerTest, DISABLED_TestSimpleScript)
 	ASSERT_EQ(10*val,matlabCompiler.Do(val));
 }
 
-TEST_F(CMatlabCompilerTest, TestMatlabCompiler2) 
+TEST_F(CMatlabCompilerTest, DISABLED_TestMatlabCompiler2) 
 {			
 	CMatlabCompiler matlabCompiler;
 	

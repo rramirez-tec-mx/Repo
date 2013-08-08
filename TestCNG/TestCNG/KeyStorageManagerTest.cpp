@@ -18,7 +18,16 @@ TEST_F(CKeyStorageManagerTest, EnumerateStorageProviderTest)
 	vector<wstring> listOfProvider;
 	manager.EnumStorageProvider(listOfProvider);
 
-	ASSERT_EQ(listOfProvider[0], L"Microsoft Software Key Storage Provider");
-	ASSERT_EQ(listOfProvider[1], L"Microsoft Platform Crypto Provider");
-	ASSERT_EQ(listOfProvider[2], L"Microsoft Smart Card Key Storage Provider");
+	ASSERT_EQ(listOfProvider[0], MS_KEY_STORAGE_PROVIDER);
+	ASSERT_EQ(listOfProvider[1], MS_PLATFORM_KEY_STORAGE_PROVIDER);
+	ASSERT_EQ(listOfProvider[2], MS_SMART_CARD_KEY_STORAGE_PROVIDER);
+}
+
+TEST_F(CKeyStorageManagerTest, OpenStorageProviderTest) 
+{
+	CKeyStorageManager manager;
+	NCRYPT_PROV_HANDLE provHandle;
+	provHandle = manager.OpenStorageProvider(MS_KEY_STORAGE_PROVIDER);
+//	if(provHandle)
+	//	NCryptFreeObject(provHandle); //necessario farlo, per ora non lo faccio
 }
