@@ -48,86 +48,86 @@ TEST(CNGConfigFunctionTest, EnumCryptoProvider)
 {
 	CCryptEnumerator cryptEnumerator;
 	char *message = "provider 3DES";
-	cryptEnumerator.PrintProvider(BCRYPT_3DES_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_3DES_ALGORITHM), message);
 
 	message = "provider 3DES_112";
-	cryptEnumerator.PrintProvider(BCRYPT_3DES_112_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_3DES_112_ALGORITHM), message);
 
 	message = "provider AES";
-	cryptEnumerator.PrintProvider(BCRYPT_AES_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_AES_ALGORITHM), message);
 	
 	message = "provider AES GMAC";
-	cryptEnumerator.PrintProvider(BCRYPT_AES_GMAC_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_AES_GMAC_ALGORITHM), message);
 	
 	message = "provider DES";
-	cryptEnumerator.PrintProvider(BCRYPT_DES_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_DES_ALGORITHM), message);
 	
 	message = "provider DESX";
-	cryptEnumerator.PrintProvider(BCRYPT_DESX_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_DESX_ALGORITHM), message);
 	
 	message = "provider DH Diffie Helmann";
-	cryptEnumerator.PrintProvider(BCRYPT_DH_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_DH_ALGORITHM), message);
 		
 	message = "provider DSA digital signature algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_DSA_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_DSA_ALGORITHM), message);
 
 	message = "provider ECDH 256-bit prime elliptic curve Diffie-Hellman key exchange algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_ECDH_P256_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_ECDH_P256_ALGORITHM), message);
 
 	message = "provider ECDH 384-bit prime elliptic curve Diffie-Hellman key exchange algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_ECDH_P384_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_ECDH_P384_ALGORITHM), message);
 
 	message = "provider ECDH 524-bit prime elliptic curve Diffie-Hellman key exchange algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_ECDH_P521_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_ECDH_P521_ALGORITHM), message);
 
 	message = "provider ECDH 256-bit prime elliptic curve digital signature algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_ECDSA_P256_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_ECDSA_P256_ALGORITHM), message);
 
 	message = "provider ECDH 384-bit prime elliptic curve digital signature algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_ECDSA_P384_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_ECDSA_P384_ALGORITHM), message);
 
 	message = "provider ECDH 524-bit prime elliptic curve digital signature algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_ECDSA_P521_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_ECDSA_P521_ALGORITHM), message);
 
 	message = "provider MD2 hash algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_MD2_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_MD2_ALGORITHM), message);
 
 	message = "provider MD4 hash algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_MD4_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_MD4_ALGORITHM), message);
 
 	message = "provider MD5 hash algorithm";
-	cryptEnumerator.PrintProvider(BCRYPT_MD5_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_MD5_ALGORITHM), message);
 
 	message = "provider RC2";
-	cryptEnumerator.PrintProvider(BCRYPT_RC2_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_RC2_ALGORITHM), message);
 
 	message = "provider RC4";
-	cryptEnumerator.PrintProvider(BCRYPT_RC4_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_RC4_ALGORITHM), message);
 	
 	message = "provider RNG random number generator";
-	cryptEnumerator.PrintProvider(BCRYPT_RNG_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_RNG_ALGORITHM), message);
 	
 	message = "provider dual elliptic curve random-number generator";
-	cryptEnumerator.PrintProvider(BCRYPT_RNG_DUAL_EC_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_RNG_DUAL_EC_ALGORITHM), message);
 	
 	message = "random-number generator algorithm suitable for DSA";
-	cryptEnumerator.PrintProvider(BCRYPT_RNG_FIPS186_DSA_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_RNG_FIPS186_DSA_ALGORITHM), message);
 	
 	message = "RSA";
-	cryptEnumerator.PrintProvider(BCRYPT_RSA_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_RSA_ALGORITHM), message);
 	
 	message = "The RSA signature algorithm. This algorithm is not currently supported. You can use the BCRYPT_RSA_ALGORITHM";
-	cryptEnumerator.PrintProvider(BCRYPT_RSA_SIGN_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_RSA_SIGN_ALGORITHM), message);
 
 	message = "SHA1 hashing";
-	cryptEnumerator.PrintProvider(BCRYPT_SHA1_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_SHA1_ALGORITHM), message);
 
 	message = "SHA256 hashing";
-	cryptEnumerator.PrintProvider(BCRYPT_SHA256_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_SHA256_ALGORITHM), message);
 
 	message = "SHA384 hashing";
-	cryptEnumerator.PrintProvider(BCRYPT_SHA384_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_SHA384_ALGORITHM), message);
 
 	message = "SHA512 hashing";
-	cryptEnumerator.PrintProvider(BCRYPT_SHA512_ALGORITHM, message);
+	cryptEnumerator.PrintProvider(wstring(BCRYPT_SHA512_ALGORITHM), message);
 }
