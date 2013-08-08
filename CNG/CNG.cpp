@@ -39,20 +39,3 @@ int CNG::CheckIfFipsIsEnabled()
 	printf("Fips Algorithm enabled HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FipsAlgorithmPolicy: %d",fipsIsEnabled);
 	return (int)fipsIsEnabled;
 }
-
-void CNG::EnumCrypyProvider(LPCWSTR pszAlgId, BCRYPT_PROVIDER_NAME ** ppImplList, ULONG & pImplCount)
-{
-	ULONG dwFlags=0;
-	NTSTATUS result;
-	ULONG pImplCount1=0;	
-	result = BCryptEnumProviders(pszAlgId, &pImplCount1, ppImplList, dwFlags);
-	if(result < 0)
-	{
-		printf("Errore in chiamata a BCryptEnumProviders\n");
-	}
-	else
-	{
-		pImplCount = pImplCount1;
-	}
-
-}

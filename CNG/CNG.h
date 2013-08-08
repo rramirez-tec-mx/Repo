@@ -9,8 +9,7 @@ public:
 	~CNG(void);
 public:
 	int EchhoNumber(int number);
-	int CheckIfFipsIsEnabled();
-	void EnumCrypyProvider(LPCWSTR pszAlgId, BCRYPT_PROVIDER_NAME **ppImplList, ULONG & pImplCount);
+	int CheckIfFipsIsEnabled();	
 };
 
 
