@@ -7,7 +7,7 @@ public:
 	CCryptEnumerator(void);
 	~CCryptEnumerator(void);
 public:
-	void PrintAlgorithm(ULONG dwAlgOperations, char * message);
+	void PrintAlgorithm(unsigned long dwAlgOperations, char * message);
 	void PrintProvider(std::wstring & pszAlgId, char * message);
 };
 

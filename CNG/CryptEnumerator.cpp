@@ -15,7 +15,7 @@ CCryptEnumerator::~CCryptEnumerator(void)
 {
 }
 
-void CCryptEnumerator::PrintAlgorithm(ULONG dwAlgOperations, char * message)
+void CCryptEnumerator::PrintAlgorithm(unsigned long dwAlgOperations, char * message)
 {
 	ULONG pAlgCount = 0;
 	BCRYPT_ALGORITHM_IDENTIFIER *ppAlgList = NULL;

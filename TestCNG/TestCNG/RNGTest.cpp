@@ -1,6 +1,6 @@
 #include "RNGTest.h"
 #include <string>
-
+#include <Windows.h>
 using namespace std;
 
 int numAttempt = 1000;

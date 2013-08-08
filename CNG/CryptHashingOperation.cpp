@@ -18,22 +18,22 @@ CCryptHashingOperation::~CCryptHashingOperation(void)
 wstring CCryptHashingOperation::CalcHashInHexForm(wstring messageToHash, wstring hashAlgType, int digestLength)
 {
 	StringHelper stringHelper;
-	vector<BYTE> resultHash;
+	vector<unsigned char> resultHash;
 	resultHash = CreateHash(messageToHash, hashAlgType);
 	wstring resultHashToHex = stringHelper.ConvertByteArrayToString(&resultHash[0],digestLength);
 	
 	return resultHashToHex;
 }
 
-vector<BYTE> CCryptHashingOperation::CalcRawHash(wstring messageToHash, wstring hashAlgType, int digestLength)
+vector<unsigned char> CCryptHashingOperation::CalcRawHash(wstring messageToHash, wstring hashAlgType, int digestLength)
 {
-	vector<BYTE> resultHash;
+	vector<unsigned char> resultHash;
 	resultHash = CreateHash(messageToHash, hashAlgType);
 	return resultHash;
 	
 }
 
-vector<BYTE> CCryptHashingOperation::CreateHash(wstring messageToHash, wstring hashAlgType)
+vector<unsigned char> CCryptHashingOperation::CreateHash(wstring messageToHash, wstring hashAlgType)
 {
 	BCRYPT_ALG_HANDLE phAlgorithm;
 	DWORD dwFlags = 0;
@@ -48,7 +48,7 @@ vector<BYTE> CCryptHashingOperation::CreateHash(wstring messageToHash, wstring h
 	DWORD cbHash = 0;
 	NTSTATUS res;
 	
-	vector<BYTE>  pbBufferCast = ConvertWStringToArrayOfByte(messageToHash);
+	vector<unsigned char>  pbBufferCast = ConvertWStringToArrayOfByte(messageToHash);
 	int lenBuffer = messageToHash.size();
 
 
@@ -99,9 +99,9 @@ vector<BYTE> CCryptHashingOperation::CreateHash(wstring messageToHash, wstring h
         HeapFree(GetProcessHeap(), 0, pbHashObject);
     }
 
-	vector<BYTE> dest;
+	vector<unsigned char> dest;
 	dest.resize(cbHash);
-	memcpy(&dest[0], pbHash, cbHash*sizeof(BYTE));
+	memcpy(&dest[0], pbHash, cbHash*sizeof(unsigned char));
 
 	if(pbHash)
     {
@@ -113,17 +113,17 @@ vector<BYTE> CCryptHashingOperation::CreateHash(wstring messageToHash, wstring h
 
 }
 
-vector<BYTE> CCryptHashingOperation::ConvertWStringToArrayOfByte(wstring stringToConvert)
+vector<unsigned char> CCryptHashingOperation::ConvertWStringToArrayOfByte(wstring stringToConvert)
 {
 	size_t lenBuffer = stringToConvert.size();
 	
-	vector<BYTE> arrayOfByte;
+	vector<unsigned char> arrayOfByte;
 	arrayOfByte.resize(lenBuffer);
 			
 	//convert text into BYTE 
 	for(size_t i=0; i<lenBuffer;i++)
 	{
-		arrayOfByte[i] = (BYTE)stringToConvert.at(i);
+		arrayOfByte[i] = (unsigned char)stringToConvert.at(i);
 	}
 	return arrayOfByte;
 }

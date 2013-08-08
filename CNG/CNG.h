@@ -1,5 +1,4 @@
 #pragma once
-#include <Windows.h>
 #include "CNGApi.h"
 
 class DLL_EXPORT CNG

@@ -1,6 +1,7 @@
 #include "CNGConfigFunctionTest.h"
 #include "..\..\CNG\CNG.h"
 #include "..\..\CNG\CryptEnumerator.h"
+#include <Windows.h>
 
 using namespace std;
 
