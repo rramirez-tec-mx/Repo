@@ -1,4 +1,4 @@
-#include "MatrixTest.h"
+#include "Matrix3DTest.h"
 #include "..\..\CNG\Matrix3D.h"
 #include <Windows.h>
 #include <ppl.h>
@@ -7,17 +7,17 @@
 using namespace std;
 using namespace Concurrency;
 
-CMatrixTest::CMatrixTest(void)
+CMatrix3DTest::CMatrix3DTest(void)
 {
 }
 
 
-CMatrixTest::~CMatrixTest(void)
+CMatrix3DTest::~CMatrix3DTest(void)
 {
 }
 
 
-TEST(CMatrixTest, TestInterp3) 
+TEST(CMatrix3DTest, TestInterp3) 
 {
 	std::vector<std::vector<double>> matrix3D;
 	std::vector<double> depthVector;
@@ -83,7 +83,7 @@ TEST(CMatrixTest, TestInterp3)
 	ASSERT_NEAR(out,15.59,1e-10);
 }
 
-TEST(CMatrixTest, TestPerfInterp3) 
+TEST(CMatrix3DTest, TestPerfInterp3) 
 {
 	CTimer timer;
 	std::vector<std::vector<double>> matrix3D;
