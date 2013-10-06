@@ -87,6 +87,7 @@
     <ClInclude Include="HashingTest.h" />
     <ClInclude Include="KeyStorageManagerTest.h" />
     <ClInclude Include="MatlabCompilerTest.h" />
+    <ClInclude Include="MatrixTest.h" />
     <ClInclude Include="MemoryLeakListener.h" />
     <ClInclude Include="QoS2Test.h" />
     <ClInclude Include="RNGTest.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="HashingTest.cpp" />
     <ClCompile Include="KeyStorageManagerTest.cpp" />
     <ClCompile Include="MatlabCompilerTest.cpp" />
+    <ClCompile Include="MatrixTest.cpp" />
     <ClCompile Include="MemoryLeakListener.cpp" />
     <ClCompile Include="QoS2Test.cpp" />
     <ClCompile Include="RNGTest.cpp" />

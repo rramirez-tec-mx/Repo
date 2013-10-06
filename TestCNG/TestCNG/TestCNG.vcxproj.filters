@@ -51,6 +51,9 @@
     <ClInclude Include="KeyStorageManagerTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MatrixTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Starter.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KeyStorageManagerTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
