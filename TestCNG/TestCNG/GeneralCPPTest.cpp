@@ -18,6 +18,7 @@
 #include <windows.h>
 #include <memory>
 #include <tchar.h>
+#include <algorithm>
 using namespace std;
 
 #pragma intrinsic (memcpy)
@@ -372,7 +373,33 @@ TEST(CNGConfigFunctionTest, TestSetDll)
 	////caz = AddDllDirectory( 
 }
 
+TEST(CNGConfigFunctionTest, TestAlgorithm) 
+{
+	std::vector<double> vec;
+	std::vector<double>::iterator low,high;
+	double val = 20;
+	vec.push_back(10);
+	vec.push_back(20);
+	vec.push_back(30);
+	vec.push_back(40);
 
+	if(val <= vec[0])
+	{
+		cout << " min e max saturati a " << vec[0] <<endl;
+		return;
+	}
+
+	if(val >= vec[vec.size()-1])
+	{
+		cout << " min e max saturati a " << vec[vec.size()-1] << endl;
+		return;
+	}
+	
+	high=std::upper_bound(vec.begin(), vec.end(), val);	
+	cout << "il range per " << val << " e' ["<< vec[high - vec.begin() -1] << "," << vec[high - vec.begin()] << "]"  << endl;
+
+	
+}
 
 TEST(CNGConfigFunctionTest, TestMemoryUsage) 
 {
