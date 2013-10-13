@@ -138,143 +138,116 @@ double CMatrix3D::Interp3(vector<vector<double>> & matrix3D, vector<double> dept
 }
 
 
+void Find2DMatricesOfBracketing(vector<vector<double>> & matrix3D, vector<double> depthVector, vector<double> & matrix2dBracket1, vector<double> & matrix2dBracket2, double interpPointZ, double & startDepth, double & endDepth)
+{
+	int startDepthIndex, endDepthIndex;
+	CalcBracketingIndexInVector(depthVector, interpPointZ, startDepthIndex, endDepthIndex);
+	startDepth = depthVector[startDepthIndex];
+	endDepth = depthVector[endDepthIndex];
+	matrix2dBracket1 = matrix3D[startDepthIndex];
+	matrix2dBracket2 = matrix3D[endDepthIndex];
+}
+
+
+
+double inverseInXOrY_internal(char dimensionToInverte, bool isRowMajorOrder, double indipendentInterpPoint, double dipendentInterpPoint, double interpPointDepth,  vector<double> & indipVectorBkp, vector<double> & dipVectorBkp, size_t XSize, size_t YSize, vector<double> & matrix2dBracket1, vector<double> & matrix2dBracket2, double startDepth, double endDepth)
+{
+	if(dimensionToInverte=='y' || dimensionToInverte=='x')
+	{				
+		int startIndipIndex, endIndipIndex;
+		CalcBracketingIndexInVector(indipVectorBkp, indipendentInterpPoint, startIndipIndex, endIndipIndex);
+
+		int startDipIndex, endDipIndex;
+		vector<double> lowerBoundVector1;
+		vector<double> upperBoundVector1;
+		vector<double> lowerBoundVector2;
+		vector<double> upperBoundVector2;
+		size_t indipVecSize = indipVectorBkp.size();
+		size_t dipVecSize = dipVectorBkp.size();
+		lowerBoundVector1.resize(dipVecSize);
+		upperBoundVector1.resize(dipVecSize);
+		lowerBoundVector2.resize(dipVecSize);
+		upperBoundVector2.resize(dipVecSize);
+
+		for(size_t k=0; k<dipVecSize; k++)
+		{
+			size_t currentIndex;
+
+			if(dimensionToInverte=='y')
+				currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, startIndipIndex, k, XSize, YSize);
+			else
+				currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, k, startIndipIndex, XSize, YSize);
+
+			lowerBoundVector1[k] = matrix2dBracket1[currentIndex];
+			lowerBoundVector2[k] = matrix2dBracket2[currentIndex];
+
+			if(dimensionToInverte=='y')
+				currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, endIndipIndex, k, XSize, YSize);
+			else
+				currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, k, endIndipIndex, XSize, YSize);
+
+			upperBoundVector1[k] = matrix2dBracket1[currentIndex];
+			upperBoundVector2[k] = matrix2dBracket2[currentIndex];
+		}
+
+		vector<double> interpolantVector1, interpolantVector2, interpolantVectorResult;
+		interpolantVector1.resize(dipVecSize);
+		interpolantVector2.resize(dipVecSize);
+		interpolantVectorResult.resize(dipVecSize);
+		double indipValue1, indipValue2;
+		indipValue1 = indipVectorBkp[startIndipIndex];
+		indipValue2 = indipVectorBkp[endIndipIndex];
+
+		//parallel_for (size_t(0), ySize, [&](size_t k)
+		for (size_t k=0; k< dipVecSize; k++)
+		{
+			interpolantVector1[k] = interp1dData(indipValue1, lowerBoundVector1[k], indipValue2, upperBoundVector1[k], indipendentInterpPoint);
+			interpolantVector2[k] = interp1dData(indipValue1, lowerBoundVector2[k], indipValue2, upperBoundVector2[k], indipendentInterpPoint);
+		}
+		//});
+
+		for (size_t k=0; k< dipVecSize; k++)
+		{
+			interpolantVectorResult[k] = interp1dData(startDepth, interpolantVector1[k], endDepth, interpolantVector2[k], interpPointDepth);
+		}
+
+		CalcBracketingIndexInVector(interpolantVectorResult, dipendentInterpPoint, startDipIndex, endDipIndex);
+	
+		// infine l'ultima interpolazione fra i risultati parziali ottenuti in f3 e f6
+		double f7;
+		f7 = interp1dData(interpolantVectorResult[startDipIndex], dipVectorBkp[startDipIndex], interpolantVectorResult[endDipIndex], dipVectorBkp[endDipIndex], dipendentInterpPoint);
+
+		return f7;
+	}	
+
+	return 0;
+}
+
+
+
 double CMatrix3D::Interp3Inverse(vector<vector<double>> & matrix3D, vector<double> depthVector, double interpPointX, double interpPointY, double interpPointZ, vector<double> & xBreakPoints, vector<double> & yBreakPoints, const char dimensionToInverte, bool isRowMajorOrder)
 {
 
-	//per ora assumiamo che le matrici 2d siano state storate column wise, per cui ricavare le colonne di bracketing è un banale memcpy, mentre
-	// ricavare le righe di bracketing impone un ciclo
+	double f7 = 0.0;		
 
-	if(dimensionToInverte=='y')
-	{
-		int startDepthIndex, endDepthIndex;
-		CalcBracketingIndexInVector(depthVector, interpPointZ, startDepthIndex, endDepthIndex);
-		double startDepth = depthVector[startDepthIndex];
-		double endDepth = depthVector[endDepthIndex];
-		vector<double> & matrix2dBracket1 = matrix3D[startDepthIndex];
-		vector<double> & matrix2dBracket2 = matrix3D[endDepthIndex];
-		//calcolo gli indici relativi ai punti che abbracciano i punti interpolanti per X e Y
-		int startXIndex, endXIndex;
-		CalcBracketingIndexInVector(xBreakPoints, interpPointX, startXIndex, endXIndex);
+	if(dimensionToInverte=='y' || dimensionToInverte=='x')
+	{		
+		double startDepth;
+		double endDepth;
+		vector<double> matrix2dBracket1;
+		vector<double> matrix2dBracket2;
 
-		int startYIndex, endYIndex;
-		vector<double> lowerBoundColumnVector1;
-		vector<double> upperBoundColumnVector1;
-		vector<double> lowerBoundColumnVector2;
-		vector<double> upperBoundColumnVector2;
-		size_t xSize = xBreakPoints.size();
-		size_t ySize = yBreakPoints.size();
-		lowerBoundColumnVector1.resize(ySize);
-		upperBoundColumnVector1.resize(ySize);
-		lowerBoundColumnVector2.resize(ySize);
-		upperBoundColumnVector2.resize(ySize);
-
-		for(size_t k=0; k<ySize; k++)
-		{
-			size_t currentIndex;
-			currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, startXIndex, k, xSize, ySize);
-			lowerBoundColumnVector1[k] = matrix2dBracket1[currentIndex];
-			lowerBoundColumnVector2[k] = matrix2dBracket2[currentIndex];
-
-			currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, endXIndex, k, xSize, ySize);
-			upperBoundColumnVector1[k] = matrix2dBracket1[currentIndex];
-			upperBoundColumnVector2[k] = matrix2dBracket2[currentIndex];
+		Find2DMatricesOfBracketing(matrix3D, depthVector, matrix2dBracket1, matrix2dBracket2, interpPointZ, startDepth, endDepth);
+			
+		if(dimensionToInverte=='y')
+		{										
+			f7 = inverseInXOrY_internal('y', isRowMajorOrder, interpPointX, interpPointY, interpPointZ, xBreakPoints, yBreakPoints, xBreakPoints.size(), yBreakPoints.size(), matrix2dBracket1, matrix2dBracket2, startDepth, endDepth);			
 		}
-
-		vector<double> interpolantVector1, interpolantVector2, interpolantVectorResult;
-		interpolantVector1.resize(ySize);
-		interpolantVector2.resize(ySize);
-		interpolantVectorResult.resize(ySize);
-		double x1,x2;
-		x1 = xBreakPoints[startXIndex];
-		x2 = xBreakPoints[endXIndex];
-
-		//parallel_for (size_t(0), ySize, [&](size_t k)
-		for (size_t k=0; k< ySize; k++)
-		{
-			interpolantVector1[k] = interp1dData(x1, lowerBoundColumnVector1[k], x2, upperBoundColumnVector1[k], interpPointX);
-			interpolantVector2[k] = interp1dData(x1, lowerBoundColumnVector2[k], x2, upperBoundColumnVector2[k], interpPointX);
+		else
+		if(dimensionToInverte=='x')
+		{										
+			f7 = inverseInXOrY_internal('x', isRowMajorOrder, interpPointY, interpPointX, interpPointZ, yBreakPoints, xBreakPoints, xBreakPoints.size(), yBreakPoints.size(), matrix2dBracket1, matrix2dBracket2, startDepth, endDepth);			
 		}
-		//});
-
-		for (size_t k=0; k< ySize; k++)
-		{
-			interpolantVectorResult[k] = interp1dData(startDepth, interpolantVector1[k], endDepth, interpolantVector2[k], interpPointZ);
-		}
-
-		CalcBracketingIndexInVector(interpolantVectorResult, interpPointY, startYIndex, endYIndex);
-	
-		// infine l'ultima interpolazione fra i risultati parziali ottenuti in f3 e f6
-		double f7;
-		f7 = interp1dData(interpolantVectorResult[startYIndex], yBreakPoints[startYIndex], interpolantVectorResult[endYIndex], yBreakPoints[endYIndex], interpPointY);
-
-		return f7;
-	}
-	else
-	if(dimensionToInverte=='x')
-	{
-		int startDepthIndex, endDepthIndex;
-		CalcBracketingIndexInVector(depthVector, interpPointZ, startDepthIndex, endDepthIndex);
-		double startDepth = depthVector[startDepthIndex];
-		double endDepth = depthVector[endDepthIndex];
-		vector<double> & matrix2dBracket1 = matrix3D[startDepthIndex];
-		vector<double> & matrix2dBracket2 = matrix3D[endDepthIndex];
-
-		int startYIndex, endYIndex;
-		CalcBracketingIndexInVector(yBreakPoints, interpPointY, startYIndex, endYIndex);
-
-		int startXIndex, endXIndex;
-		vector<double> lowerBoundRowVector1;
-		vector<double> upperBoundRowVector1;
-		vector<double> lowerBoundRowVector2;
-		vector<double> upperBoundRowVector2;
-		size_t xSize = xBreakPoints.size();
-		size_t ySize = yBreakPoints.size();
-		lowerBoundRowVector1.resize(xSize);
-		upperBoundRowVector1.resize(xSize);
-		lowerBoundRowVector2.resize(xSize);
-		upperBoundRowVector2.resize(xSize);
-		
-		for(size_t k=0; k<xSize; k++)
-		{
-			size_t currentIndex;
-			currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, k, startYIndex, xSize, ySize);
-			lowerBoundRowVector1[k] = matrix2dBracket1[currentIndex];
-			lowerBoundRowVector2[k] = matrix2dBracket2[currentIndex];
-
-			currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, k, endYIndex, xSize, ySize);
-			upperBoundRowVector1[k] = matrix2dBracket1[currentIndex];
-			upperBoundRowVector2[k] = matrix2dBracket2[currentIndex];
-		}
-
-
-		vector<double> interpolantVector1, interpolantVector2, interpolantVectorResult;
-		interpolantVector1.resize(xSize);
-		interpolantVector2.resize(xSize);
-		interpolantVectorResult.resize(xSize);
-		double y1,y2;
-		y1 = yBreakPoints[startYIndex];
-		y2 = yBreakPoints[endYIndex];
-
-		//parallel_for (size_t(0), ySize, [&](size_t k)
-		for (size_t k=0; k< xSize; k++)
-		{
-			interpolantVector1[k] = interp1dData(y1, lowerBoundRowVector1[k], y2, upperBoundRowVector1[k], interpPointY);
-			interpolantVector2[k] = interp1dData(y1, lowerBoundRowVector2[k], y2, upperBoundRowVector2[k], interpPointY);
-		}
-		//});
-
-		for (size_t k=0; k< xSize; k++)
-		{
-			interpolantVectorResult[k] = interp1dData(startDepth, interpolantVector1[k], endDepth, interpolantVector2[k], interpPointZ);
-		}
-
-		CalcBracketingIndexInVector(interpolantVectorResult, interpPointX, startXIndex, endXIndex);
-	
-		// infine l'ultima interpolazione fra i risultati parziali ottenuti in f3 e f6
-		double f7;
-		f7 = interp1dData(interpolantVectorResult[startXIndex], xBreakPoints[startXIndex], interpolantVectorResult[endXIndex], xBreakPoints[endXIndex], interpPointX);
-
-		return f7;
 	}
 	else
 	if(dimensionToInverte=='z')
@@ -284,7 +257,7 @@ double CMatrix3D::Interp3Inverse(vector<vector<double>> & matrix3D, vector<doubl
 		int startZIndex, endZIndex;
 		double x1,x2,y1,y2;
 		double z11_1, z12_1, z21_1,z22_1;
-		double f1, f2, f3, f7;
+		double f1, f2, f3;
 		vector<double> interpolantVectorResult;
 		interpolantVectorResult.resize(depthVector.size());
 		size_t xSize = xBreakPoints.size();
@@ -319,10 +292,8 @@ double CMatrix3D::Interp3Inverse(vector<vector<double>> & matrix3D, vector<doubl
 
 		CalcBracketingIndexInVector(interpolantVectorResult, interpPointZ, startZIndex, endZIndex);
 
-		f7 = interp1dData(interpolantVectorResult[startZIndex], depthVector[startZIndex], interpolantVectorResult[endZIndex], depthVector[endZIndex], interpPointZ);
-
-		return f7;
+		f7 = interp1dData(interpolantVectorResult[startZIndex], depthVector[startZIndex], interpolantVectorResult[endZIndex], depthVector[endZIndex], interpPointZ);		
 	}
 
-	return 0;
+	return f7;
 }
