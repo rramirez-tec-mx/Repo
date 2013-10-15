@@ -91,6 +91,7 @@
     <ClInclude Include="MemoryLeakListener.h" />
     <ClInclude Include="QoS2Test.h" />
     <ClInclude Include="RNGTest.h" />
+    <ClInclude Include="SSLTest.h" />
     <ClInclude Include="Starter.h" />
     <ClInclude Include="TestLapack.h" />
   </ItemGroup>
@@ -105,6 +106,7 @@
     <ClCompile Include="MemoryLeakListener.cpp" />
     <ClCompile Include="QoS2Test.cpp" />
     <ClCompile Include="RNGTest.cpp" />
+    <ClCompile Include="SSLTest.cpp" />
     <ClCompile Include="Starter.cpp" />
     <ClCompile Include="TestLapack.cpp" />
   </ItemGroup>
