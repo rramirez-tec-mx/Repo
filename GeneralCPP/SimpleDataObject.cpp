@@ -26,4 +26,12 @@ double CSimpleDataObject::GetUonV()
 	return m_UonV;
 }
 
-	
+void CSimpleDataObject::PassString(std::string mystring)
+{
+	return;
+}
+
+void CSimpleDataObject::PassStringByRef(const std::string & mystring)
+{
+	return;
+}

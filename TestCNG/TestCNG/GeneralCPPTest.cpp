@@ -444,3 +444,29 @@ TEST(CNGConfigFunctionTest, TestMemoryUsage)
 	
 }
 
+
+TEST(CNGConfigFunctionTest, TestCopyStringPerf) 
+{
+	CSimpleDataObject obj(0,0,0,0,0);
+	string message = "ciao";
+	size_t repetitions = 10000;;
+
+	CTimer timer;
+
+	cout << "Start profiling with copy of " << repetitions << " string" << endl;
+	timer.Start();
+	for (size_t k =0; k< repetitions; k++)
+		obj.PassString(message);
+	timer.GetElapsedTimeInMicros();
+
+	cout << endl;
+
+	cout << "Start profiling with references of " << repetitions << " string" << endl;	
+	timer.Start();
+	for (size_t k =0; k< repetitions; k++)
+		obj.PassStringByRef(message);
+
+	timer.GetElapsedTimeInMicros();
+
+	
+}
