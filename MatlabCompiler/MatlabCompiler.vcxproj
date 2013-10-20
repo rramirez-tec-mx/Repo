@@ -51,6 +51,7 @@
       <AdditionalIncludeDirectories>J:\Progetti\ProgettiMatlab\MatlabCompiler2;J:\Program Files (x86)\MATLAB\R2007b\extern\include;J:\Progetti\ProgettiMatlab\MatlabCompiler;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -66,6 +67,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>J:\Progetti\ProgettiMatlab\MatlabCompiler2;J:\Program Files (x86)\MATLAB\R2007b\extern\include;J:\Progetti\ProgettiMatlab\MatlabCompiler;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
