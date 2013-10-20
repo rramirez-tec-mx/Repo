@@ -26,7 +26,7 @@ double interp1dData(double xStart, double yStart, double xEnd, double yEnd, doub
 
 //questo richiede che il vettore in ingresso sia monotono crescente.
 //da verificare che value stia internamente al range di aVector
-void CalcBracketingIndexInVector(vector<double> aVector, double value, int & startIndex, int & endIndex)
+void CalcBracketingIndexInVector(const vector<double> & aVector, double value, size_t & startIndex, size_t & endIndex)
 {
 	startIndex = aVector.size()-1;
 	endIndex = 0;
@@ -69,24 +69,24 @@ int CalculateIndexInsideMatrixStoredAsFlatVector(bool isRowMajor, int xIndex, in
 }
 
 //attenzione, l'uso di questa funzione prevede che i breakpoints di x e y siano monotoni crescenti
-double CMatrix3D::Interp3(vector<vector<double>> & matrix3D, vector<double> depthVector, double interpPointX, double interpPointY, double interpPointZ, vector<double> & xBreakPoints, vector<double> & yBreakPoints, bool isRowMajorOrder)
+double CMatrix3D::Interp3(const vector<vector<double>> & matrix3D, const vector<double> & depthVector, double interpPointX, double interpPointY, double interpPointZ, const vector<double> & xBreakPoints, const vector<double> & yBreakPoints, bool isRowMajorOrder)
 {
 	//per prima  cosa ricerco le due matrici 2d che abbracciano il valore di interpPointZ passato, che rappresenta la profondità del cubo
-	int startDepthIndex, endDepthIndex;
+	size_t startDepthIndex, endDepthIndex;
 	CalcBracketingIndexInVector(depthVector, interpPointZ, startDepthIndex, endDepthIndex);
 	double startDepth = depthVector[startDepthIndex];
 	double endDepth = depthVector[endDepthIndex];
 
 	//trovati gli indici , mi prendo una ref alle 2 matrici 2d che abbracciano la coordinata Z che esprime la profondità del cubo, attenzione al row/column order wise
 
-	vector<double> & matrix2dBracket1 = matrix3D[startDepthIndex];
-	vector<double> & matrix2dBracket2 = matrix3D[endDepthIndex];
+	const vector<double> & matrix2dBracket1 = matrix3D[startDepthIndex];
+	const vector<double> & matrix2dBracket2 = matrix3D[endDepthIndex];
 
 	//calcolo gli indici relativi ai punti che abbracciano i punti interpolanti per X e Y
-	int startXIndex, endXIndex;
+	size_t startXIndex, endXIndex;
 	CalcBracketingIndexInVector(xBreakPoints, interpPointX, startXIndex, endXIndex);
 
-	int startYIndex, endYIndex;
+	size_t startYIndex, endYIndex;
 	CalcBracketingIndexInVector(yBreakPoints, interpPointY, startYIndex, endYIndex);
 
 	//ricavo le coordinate che rappresentano i punti di lavoro per le interpolazioni successive
@@ -104,24 +104,19 @@ double CMatrix3D::Interp3(vector<vector<double>> & matrix3D, vector<double> dept
 	double f1,f2,f3,f4,f5,f6,f7;
 	
 	double z11_1, z12_1, z21_1,z22_1;
+	double z11_2, z12_2, z21_2, z22_2;
 	
 	int currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,startYIndex,xBreakPoints.size(), yBreakPoints.size());
 	z11_1 = matrix2dBracket1[currentIndex];
-	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,endXIndex,startYIndex,xBreakPoints.size(), yBreakPoints.size());
-	z21_1 = matrix2dBracket1[currentIndex];
-	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,endYIndex,xBreakPoints.size(), yBreakPoints.size());
-	z12_1 = matrix2dBracket1[currentIndex];
-	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,endXIndex,endYIndex,xBreakPoints.size(), yBreakPoints.size());
-	z22_1 = matrix2dBracket1[currentIndex];
-
-	double z11_2, z12_2, z21_2,z22_2;
-	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,startYIndex,xBreakPoints.size(), yBreakPoints.size());
 	z11_2 = matrix2dBracket2[currentIndex];
 	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,endXIndex,startYIndex,xBreakPoints.size(), yBreakPoints.size());
+	z21_1 = matrix2dBracket1[currentIndex];
 	z21_2 = matrix2dBracket2[currentIndex];
 	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,endYIndex,xBreakPoints.size(), yBreakPoints.size());
+	z12_1 = matrix2dBracket1[currentIndex];
 	z12_2 = matrix2dBracket2[currentIndex];
 	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,endXIndex,endYIndex,xBreakPoints.size(), yBreakPoints.size());
+	z22_1 = matrix2dBracket1[currentIndex];
 	z22_2 = matrix2dBracket2[currentIndex];
 
 	f1 = interp1dData(x1,z11_1,x2,z21_1,interpPointX);
@@ -138,26 +133,23 @@ double CMatrix3D::Interp3(vector<vector<double>> & matrix3D, vector<double> dept
 }
 
 
-void Find2DMatricesOfBracketing(vector<vector<double>> & matrix3D, vector<double> depthVector, vector<double> & matrix2dBracket1, vector<double> & matrix2dBracket2, double interpPointZ, double & startDepth, double & endDepth)
+void Find2DMatricesOfBracketing(const vector<double> & depthVector, size_t & startDepthIndex, size_t & endDepthIndex, double interpPointZ, double & startDepth, double & endDepth)
 {
-	int startDepthIndex, endDepthIndex;
 	CalcBracketingIndexInVector(depthVector, interpPointZ, startDepthIndex, endDepthIndex);
 	startDepth = depthVector[startDepthIndex];
 	endDepth = depthVector[endDepthIndex];
-	matrix2dBracket1 = matrix3D[startDepthIndex];
-	matrix2dBracket2 = matrix3D[endDepthIndex];
 }
 
 
 
-double inverseInXOrY_internal(char dimensionToInverte, bool isRowMajorOrder, double indipendentInterpPoint, double dipendentInterpPoint, double interpPointDepth,  vector<double> & indipVectorBkp, vector<double> & dipVectorBkp, size_t XSize, size_t YSize, vector<double> & matrix2dBracket1, vector<double> & matrix2dBracket2, double startDepth, double endDepth)
+double inverseInXOrY_internal(char dimensionToInverte, bool isRowMajorOrder, double indipendentInterpPoint, double dipendentInterpPoint, double interpPointDepth,  const vector<double> & indipVectorBkp, const vector<double> & dipVectorBkp, size_t XSize, size_t YSize, const vector<double> & matrix2dBracket1, const vector<double> & matrix2dBracket2, double startDepth, double endDepth)
 {
 	if(dimensionToInverte=='y' || dimensionToInverte=='x')
 	{				
-		int startIndipIndex, endIndipIndex;
+		size_t startIndipIndex, endIndipIndex;
 		CalcBracketingIndexInVector(indipVectorBkp, indipendentInterpPoint, startIndipIndex, endIndipIndex);
 
-		int startDipIndex, endDipIndex;
+		size_t startDipIndex, endDipIndex;
 		vector<double> lowerBoundVector1;
 		vector<double> upperBoundVector1;
 		vector<double> lowerBoundVector2;
@@ -225,7 +217,7 @@ double inverseInXOrY_internal(char dimensionToInverte, bool isRowMajorOrder, dou
 
 
 
-double CMatrix3D::Interp3Inverse(vector<vector<double>> & matrix3D, vector<double> depthVector, double interpPointX, double interpPointY, double interpPointZ, vector<double> & xBreakPoints, vector<double> & yBreakPoints, const char dimensionToInverte, bool isRowMajorOrder)
+double CMatrix3D::Interp3Inverse(const vector<vector<double>> & matrix3D, const vector<double> & depthVector, double interpPointX, double interpPointY, double interpPointZ, const vector<double> & xBreakPoints, const vector<double> & yBreakPoints, const char dimensionToInverte, bool isRowMajorOrder)
 {
 
 	double f7 = 0.0;		
@@ -234,10 +226,11 @@ double CMatrix3D::Interp3Inverse(vector<vector<double>> & matrix3D, vector<doubl
 	{		
 		double startDepth;
 		double endDepth;
-		vector<double> matrix2dBracket1;
-		vector<double> matrix2dBracket2;
+		size_t startDepthIndex, endDepthIndex;
+		Find2DMatricesOfBracketing(depthVector, startDepthIndex, endDepthIndex, interpPointZ, startDepth, endDepth);
 
-		Find2DMatricesOfBracketing(matrix3D, depthVector, matrix2dBracket1, matrix2dBracket2, interpPointZ, startDepth, endDepth);
+		const vector<double> & matrix2dBracket1 = matrix3D[startDepthIndex];
+		const vector<double> & matrix2dBracket2 = matrix3D[endDepthIndex];
 			
 		if(dimensionToInverte=='y')
 		{										
@@ -252,9 +245,9 @@ double CMatrix3D::Interp3Inverse(vector<vector<double>> & matrix3D, vector<doubl
 	else
 	if(dimensionToInverte=='z')
 	{
-		int startXIndex, endXIndex;
-		int startYIndex, endYIndex;
-		int startZIndex, endZIndex;
+		size_t startXIndex, endXIndex;
+		size_t startYIndex, endYIndex;
+		size_t startZIndex, endZIndex;
 		double x1,x2,y1,y2;
 		double z11_1, z12_1, z21_1,z22_1;
 		double f1, f2, f3;
@@ -273,7 +266,7 @@ double CMatrix3D::Interp3Inverse(vector<vector<double>> & matrix3D, vector<doubl
 		for(size_t k=0; k<depthVector.size(); k++)
 		{
 			size_t currentIndex;
-			vector<double> & current2dMatrix = matrix3D[k];
+			const vector<double> & current2dMatrix = matrix3D[k];
 			
 			currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder, startXIndex, startYIndex, xSize, ySize);
 			z11_1 = current2dMatrix[currentIndex];
