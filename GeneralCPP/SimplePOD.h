@@ -1,9 +1,7 @@
 #pragma once
-#pragma warning( disable: 4251 )
-#include <vector>
-#define DLL_EXPORT __declspec(dllexport)
+#include "GeneralCPPExport.h"
 
-class DLL_EXPORT SimplePOD
+class GENERALCPP_EXPORTS_API SimplePOD
 {
 public:
 	SimplePOD(void);
@@ -99,7 +97,7 @@ public:
 	float m_88;
 	float m_89;
 	float m_90;
-	std::vector<double> m_values;
+
 	
 	
 };

@@ -1,7 +1,7 @@
 #pragma once
+#include "GeneralCPPExport.h"
 
-#define DLL_EXPORT __declspec(dllexport)
-class DLL_EXPORT CTimer
+class GENERALCPP_EXPORTS_API CTimer
 {
 public:
 	CTimer(void);

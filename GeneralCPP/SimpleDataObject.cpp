@@ -31,7 +31,7 @@ void CSimpleDataObject::PassString(std::string mystring)
 	return;
 }
 
-void CSimpleDataObject::PassStringByRef(const std::string & mystring)
+void CSimpleDataObject::PassStringByRef(const std::string & )
 {
 	return;
 }

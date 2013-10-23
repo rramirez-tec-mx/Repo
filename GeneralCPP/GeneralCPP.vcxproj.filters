@@ -41,5 +41,8 @@
     <ClInclude Include="SimplePOD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeneralCPPExport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

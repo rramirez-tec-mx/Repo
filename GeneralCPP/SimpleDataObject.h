@@ -1,10 +1,8 @@
 #pragma once
 #include <string>
-#define DLL_EXPORT __declspec(dllexport)
+#include "GeneralCPPExport.h"
 
-
-
-class DLL_EXPORT CSimpleDataObject
+class GENERALCPP_EXPORTS_API CSimpleDataObject
 {
 public:
 	CSimpleDataObject(double val1, double val2, double val3, double m1, double m2);
