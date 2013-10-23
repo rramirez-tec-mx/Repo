@@ -1,4 +1,3 @@
-//#include "stdafx.h"
 #include "Matrix3D.h"
 
 using namespace std;

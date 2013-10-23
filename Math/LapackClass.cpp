@@ -1,4 +1,3 @@
-//#include "StdAfx.h"
 #include "LapackClass.h"
 #include <stdio.h>
 #include <vector>
