@@ -58,16 +58,17 @@
       <AdditionalIncludeDirectories>..\3rdParty\ssl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <SDLCheck>true</SDLCheck>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>bcrypt.lib;liblapack.lib;libblas.lib;Ncrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\LAPACK\Debug\;..\BLAS\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\3rdparty\LAPACK\Debug\;..\3rdparty\BLAS\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
-copy ..\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
+      <Command>xcopy /y ..\3rdparty\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -89,11 +90,11 @@ copy ..\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationN
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>bcrypt.lib;liblapack.lib;libblas.lib;Ncrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\LAPACK\Release\;..\BLAS\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\3rdparty\LAPACK\Release\;..\3rdparty\BLAS\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
-copy ..\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
+      <Command>cxcopy /y ..\3rdparty\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
