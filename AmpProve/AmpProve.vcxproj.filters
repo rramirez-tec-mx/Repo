@@ -24,4 +24,7 @@
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\QoS2\QoS2.vcxproj" />
+  </ItemGroup>
 </Project>

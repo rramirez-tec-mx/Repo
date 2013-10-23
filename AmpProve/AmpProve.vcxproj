@@ -75,6 +75,9 @@
   <ItemGroup>
     <ClCompile Include="AmpWrapper.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\QoS2\QoS2.vcxproj" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -48,7 +48,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\gtest-1.6.0\include;..\..\\gtest-1.6.0\include\gtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\gtest-1.7.0\include;..\gtest-1.7.0\include\gtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -68,7 +68,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\gtest-1.6.0\include;..\..\gtest-1.6.0\include\gtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\gtest-1.7.0\include;..\gtest-1.7.0\include\gtest;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -114,21 +114,21 @@
     <ClCompile Include="TestLapack.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CNG\CNG.vcxproj">
-      <Project>{694e87c0-d634-4213-ace4-9ce1ca2991ce}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\GeneralCPP\GeneralCPP.vcxproj">
-      <Project>{b2534317-5957-47fc-bbd6-efddfe3a748f}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\gtest-1.6.0\msvc\gtest.vcxproj">
-      <Project>{c8f6c172-56f2-4e76-b5fa-c3b423b31be7}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\QoS2\QoS2.vcxproj">
-      <Project>{91b956b4-c683-4b62-bd7e-185f3229dd2c}</Project>
-    </ProjectReference>
+    <Text Include="documentazione.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="documentazione.txt" />
+    <ProjectReference Include="..\CNG\CNG.vcxproj">
+      <Project>{694e87c0-d634-4213-ace4-9ce1ca2991ce}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GeneralCPP\GeneralCPP.vcxproj">
+      <Project>{b2534317-5957-47fc-bbd6-efddfe3a748f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\gtest-1.7.0\msvc\gtest.vcxproj">
+      <Project>{c8f6c172-56f2-4e76-b5fa-c3b423b31be7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\QoS2\QoS2.vcxproj">
+      <Project>{91b956b4-c683-4b62-bd7e-185f3229dd2c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
