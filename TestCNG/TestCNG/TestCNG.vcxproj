@@ -88,7 +88,6 @@
     <ClInclude Include="GeneralCPPTest.h" />
     <ClInclude Include="HashingTest.h" />
     <ClInclude Include="KeyStorageManagerTest.h" />
-    <ClInclude Include="MatlabCompilerTest.h" />
     <ClInclude Include="Matrix3DTest.h" />
     <ClInclude Include="MemoryLeakListener.h" />
     <ClInclude Include="QoS2Test.h" />
@@ -103,7 +102,6 @@
     <ClCompile Include="GeneralCPPTest.cpp" />
     <ClCompile Include="HashingTest.cpp" />
     <ClCompile Include="KeyStorageManagerTest.cpp" />
-    <ClCompile Include="MatlabCompilerTest.cpp" />
     <ClCompile Include="Matrix3DTest.cpp" />
     <ClCompile Include="MemoryLeakListener.cpp" />
     <ClCompile Include="QoS2Test.cpp" />
@@ -121,9 +119,6 @@
     </ProjectReference>
     <ProjectReference Include="..\..\gtest-1.6.0\msvc\gtest.vcxproj">
       <Project>{c8f6c172-56f2-4e76-b5fa-c3b423b31be7}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MatlabCompiler\MatlabCompiler.vcxproj">
-      <Project>{a5706fb8-5a08-4642-be6f-2868eac57053}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\QoS2\QoS2.vcxproj">
       <Project>{91b956b4-c683-4b62-bd7e-185f3229dd2c}</Project>

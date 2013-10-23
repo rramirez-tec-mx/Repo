@@ -36,9 +36,6 @@
     <ClInclude Include="RNGTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MatlabCompilerTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -78,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RNGTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MatlabCompilerTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MemoryLeakListener.cpp">
