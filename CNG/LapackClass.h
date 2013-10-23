@@ -3,7 +3,7 @@
 #include <vector>
 #include "CNGApi.h"
 
-class DLL_EXPORT LapackClass
+class CNG_EXPORTS_API LapackClass
 {
 public:
 	LapackClass(void);

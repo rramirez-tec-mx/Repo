@@ -1,7 +1,8 @@
 #pragma once
 #include "CNGApi.h"
+#include <string>
 
-class DLL_EXPORT CCryptEnumerator
+class CNG_EXPORTS_API CCryptEnumerator
 {
 public:
 	CCryptEnumerator(void);

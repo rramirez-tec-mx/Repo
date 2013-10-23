@@ -66,13 +66,10 @@ void LapackClass::calcMatrix2(double *matrixC)
 	double alpha = 1.0;
 	double beta = 0.0;
 	char notrans = 'N';
-	char trans = 'T';
-	int i=0;
 	int lda = 3;    
 
 	int rowsOfMatrixA = 3;
-	int columnsOfMatrixA = 3;
-
+	
 	vector<double> matrixA;
 	//first column of A
 	matrixA.push_back(1);
@@ -87,7 +84,7 @@ void LapackClass::calcMatrix2(double *matrixC)
 	matrixA.push_back(3);
 	matrixA.push_back(7);
      	  
-	int ldb = 3;
+	
 	int columnsOfMatrixB = 1;	
 	vector<double> matrixB;
 	matrixB.push_back(1);

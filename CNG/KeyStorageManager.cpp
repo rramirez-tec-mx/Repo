@@ -66,7 +66,7 @@ void CKeyStorageManager::FinalizePersistedKey(NCRYPT_KEY_HANDLE hKey)
 }
 
 
-void CKeyStorageManager::OpenExistingPersistedKey(NCRYPT_PROV_HANDLE hProvider, NCRYPT_KEY_HANDLE *phKey, const wstring & pszAlgId, const wstring & pszKeyName, DWORD dwLegacyKeySpec, DWORD dwFlags)
+void CKeyStorageManager::OpenExistingPersistedKey(NCRYPT_PROV_HANDLE hProvider, NCRYPT_KEY_HANDLE *phKey, const wstring & pszKeyName, DWORD dwLegacyKeySpec, DWORD dwFlags)
 {		
 	SECURITY_STATUS ret;
 	ret =  NCryptOpenKey(hProvider, phKey, pszKeyName.c_str(), dwLegacyKeySpec, dwFlags);

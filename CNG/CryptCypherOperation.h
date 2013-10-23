@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
 #include <memory>
+#include <vector>
 #include "CNGApi.h"
 
-class DLL_EXPORT CryptCypherOperation
+class CNG_EXPORTS_API CryptCypherOperation
 {
 public:
 	CryptCypherOperation(void);

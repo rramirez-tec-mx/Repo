@@ -153,8 +153,7 @@ double inverseInXOrY_internal(char dimensionToInverte, bool isRowMajorOrder, dou
 		vector<double> lowerBoundVector1;
 		vector<double> upperBoundVector1;
 		vector<double> lowerBoundVector2;
-		vector<double> upperBoundVector2;
-		size_t indipVecSize = indipVectorBkp.size();
+		vector<double> upperBoundVector2;		
 		size_t dipVecSize = dipVectorBkp.size();
 		lowerBoundVector1.resize(dipVecSize);
 		upperBoundVector1.resize(dipVecSize);

@@ -1,8 +1,9 @@
 #pragma once
 #include "CNGApi.h"
+#include <vector>
 #pragma warning (disable : 4251)
 
-class DLL_EXPORT CMatrix
+class CNG_EXPORTS_API CMatrix
 {
 public:
 	CMatrix(int sizeX, int sizeY);

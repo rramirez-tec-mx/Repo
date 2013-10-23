@@ -1,8 +1,9 @@
 #pragma once
 #include "CNGApi.h"
 #include <string>
+#include <vector>
 
-class DLL_EXPORT SSL
+class CNG_EXPORTS_API SSL
 {
 public:
 	SSL(void);

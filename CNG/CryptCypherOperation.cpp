@@ -66,7 +66,7 @@ BCRYPT_KEY_HANDLE CryptCypherOperation::GenerateSimmetricKeyFromPassPhrase(wstri
 	BCRYPT_KEY_HANDLE hKey = NULL;
 	
 	vector<BYTE> pbSecret;
-	pbSecret = hashingOperation.CalcRawHash(passPhrase, cryptAlgTypeForSecret, digestLength);
+	pbSecret = hashingOperation.CalcRawHash(passPhrase, cryptAlgTypeForSecret);
 	cbSecret = digestLength;
 
 	ret = BCryptOpenAlgorithmProvider(&hAlgorithm, cryptAlgTypeForEncryption.c_str(), NULL, 0);

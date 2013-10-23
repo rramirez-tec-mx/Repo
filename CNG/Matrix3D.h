@@ -2,7 +2,7 @@
 #include "CNGApi.h"
 #include <vector>
 
-class DLL_EXPORT CMatrix3D
+class CNG_EXPORTS_API CMatrix3D
 {
 public:
 	CMatrix3D(void);

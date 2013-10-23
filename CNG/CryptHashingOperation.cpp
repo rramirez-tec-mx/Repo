@@ -25,7 +25,7 @@ wstring CCryptHashingOperation::CalcHashInHexForm(wstring messageToHash, wstring
 	return resultHashToHex;
 }
 
-vector<unsigned char> CCryptHashingOperation::CalcRawHash(wstring messageToHash, wstring hashAlgType, int digestLength)
+vector<unsigned char> CCryptHashingOperation::CalcRawHash(wstring messageToHash, wstring hashAlgType)
 {
 	vector<unsigned char> resultHash;
 	resultHash = CreateHash(messageToHash, hashAlgType);
@@ -36,8 +36,6 @@ vector<unsigned char> CCryptHashingOperation::CalcRawHash(wstring messageToHash,
 vector<unsigned char> CCryptHashingOperation::CreateHash(wstring messageToHash, wstring hashAlgType)
 {
 	BCRYPT_ALG_HANDLE phAlgorithm;
-	DWORD dwFlags = 0;
-
 	BCRYPT_HASH_HANDLE hHash = NULL;
 
 	PBYTE pbHashObject = NULL;

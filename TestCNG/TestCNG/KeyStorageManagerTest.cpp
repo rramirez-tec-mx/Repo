@@ -67,7 +67,7 @@ TEST_F(CKeyStorageManagerTest, CreateAndFinalizeAndOpenAndDeletePeristedKeyTest)
 	ASSERT_NE(hKey, (NCRYPT_KEY_HANDLE)nullptr);
 	manager.FinalizePersistedKey(hKey);
 	Sleep(3000);
-	manager.OpenExistingPersistedKey(provHandle, &hKey, pszAlgId, m_pszKeyName, dwLegacyKeySpec, dwFlags);
+	manager.OpenExistingPersistedKey(provHandle, &hKey, m_pszKeyName, dwLegacyKeySpec, dwFlags);
 	ASSERT_NE(hKey, (NCRYPT_KEY_HANDLE)nullptr);
 
 	manager.DeleteExistingPersistedKey(hKey, dwFlags);

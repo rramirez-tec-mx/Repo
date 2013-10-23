@@ -3,7 +3,7 @@
 #include "CNGApi.h"
 
 
-class DLL_EXPORT StringHelper
+class CNG_EXPORTS_API StringHelper
 {
 public:
 	StringHelper(void);

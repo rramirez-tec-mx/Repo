@@ -3,7 +3,7 @@
 #include "CNGApi.h"
 
 
-class DLL_EXPORT CryptRandomNumberGenerator
+class CNG_EXPORTS_API CryptRandomNumberGenerator
 {
 public:
 	CryptRandomNumberGenerator(void);

@@ -1,7 +1,7 @@
 #pragma once
 #include "CNGApi.h"
 
-class DLL_EXPORT CNG
+class CNG_EXPORTS_API CNG
 {
 public:
 	CNG(void);
