@@ -1,6 +1,6 @@
 #include "Starter.h"
 #include <tchar.h>
-#include "gtest.h"
+#include "gtest\gtest.h"
 #include "MemoryLeakListener.h"
 
 using namespace std;

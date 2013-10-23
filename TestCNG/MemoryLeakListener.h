@@ -1,5 +1,5 @@
 #pragma once
-#include "gtest.h"
+#include "gtest\gtest.h"
 class CMemoryLeakListener : public ::testing::EmptyTestEventListener 
 {
 public:
