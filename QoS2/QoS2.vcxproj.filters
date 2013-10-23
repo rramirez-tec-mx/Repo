@@ -18,6 +18,9 @@
     <ClInclude Include="QoS2Manager.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="QoSExport.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="QoS2Manager.cpp">
