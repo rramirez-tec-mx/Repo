@@ -1,6 +1,6 @@
 #include "TestLapack.h"
-#include "..\CNG\LapackClass.h"
-#include "..\CNG\Matrix.h"
+#include "..\Math\LapackClass.h"
+#include "..\Math\Matrix.h"
 
 #include <vector>
 

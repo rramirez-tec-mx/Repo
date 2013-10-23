@@ -126,6 +126,9 @@
     <ProjectReference Include="..\GeneralCPP\GeneralCPP.vcxproj">
       <Project>{b2534317-5957-47fc-bbd6-efddfe3a748f}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Math\Math.vcxproj">
+      <Project>{fb3cb6f9-e02f-43ed-b8a0-586e3aa13838}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\QoS2\QoS2.vcxproj">
       <Project>{91b956b4-c683-4b62-bd7e-185f3229dd2c}</Project>
     </ProjectReference>

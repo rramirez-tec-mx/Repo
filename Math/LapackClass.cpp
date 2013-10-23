@@ -1,9 +1,9 @@
-#include "StdAfx.h"
+//#include "StdAfx.h"
 #include "LapackClass.h"
 #include <stdio.h>
 #include <vector>
 #include "Matrix.h"
-
+#include <algorithm>
 using namespace std;
 
 

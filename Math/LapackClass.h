@@ -1,9 +1,9 @@
 #pragma once
 #include "Matrix.h"
 #include <vector>
-#include "CNGApi.h"
+#include "MathApi.h"
 
-class CNG_EXPORTS_API LapackClass
+class MATH_EXPORTS_API LapackClass
 {
 public:
 	LapackClass(void);

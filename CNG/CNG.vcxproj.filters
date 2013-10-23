@@ -33,12 +33,6 @@
     <ClInclude Include="CryptEnumerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LapackClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CryptCypherOperation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -52,9 +46,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CNGApi.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Matrix3D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SSL.h">
@@ -74,12 +65,6 @@
     <ClCompile Include="CryptEnumerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LapackClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CryptCypherOperation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KeyStorageManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Matrix3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SSL.cpp">

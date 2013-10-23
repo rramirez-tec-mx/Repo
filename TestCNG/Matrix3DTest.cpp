@@ -1,5 +1,5 @@
 #include "Matrix3DTest.h"
-#include "..\CNG\Matrix3D.h"
+#include "..\Math\Matrix3D.h"
 #include <Windows.h>
 #include <ppl.h>
 #include "..\GeneralCPP\Timer.h"

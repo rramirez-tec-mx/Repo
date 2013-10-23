@@ -1,8 +1,8 @@
 #pragma once
-#include "CNGApi.h"
+#include "MathApi.h"
 #include <vector>
 
-class CNG_EXPORTS_API CMatrix3D
+class MATH_EXPORTS_API CMatrix3D
 {
 public:
 	CMatrix3D(void);

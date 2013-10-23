@@ -63,12 +63,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>bcrypt.lib;liblapack.lib;libblas.lib;Ncrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\3rdparty\LAPACK\Debug\;..\3rdparty\BLAS\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>bcrypt.lib;Ncrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y ..\3rdparty\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -89,12 +89,12 @@ xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(C
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>bcrypt.lib;liblapack.lib;libblas.lib;Ncrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\3rdparty\LAPACK\Release\;..\3rdparty\BLAS\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>bcrypt.lib;Ncrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>cxcopy /y ..\3rdparty\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -108,9 +108,6 @@ xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(C
     <ClInclude Include="CryptHashingOperation.h" />
     <ClInclude Include="CryptRandomNumberGenerator.h" />
     <ClInclude Include="KeyStorageManager.h" />
-    <ClInclude Include="LapackClass.h" />
-    <ClInclude Include="Matrix.h" />
-    <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="SSL.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StringHelper.h" />
@@ -123,9 +120,6 @@ xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(C
     <ClCompile Include="CryptHashingOperation.cpp" />
     <ClCompile Include="CryptRandomNumberGenerator.cpp" />
     <ClCompile Include="KeyStorageManager.cpp" />
-    <ClCompile Include="LapackClass.cpp" />
-    <ClCompile Include="Matrix.cpp" />
-    <ClCompile Include="Matrix3D.cpp" />
     <ClCompile Include="SSL.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
