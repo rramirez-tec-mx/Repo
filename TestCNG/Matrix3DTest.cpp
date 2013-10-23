@@ -1,8 +1,8 @@
 #include "Matrix3DTest.h"
-#include "..\..\CNG\Matrix3D.h"
+#include "..\CNG\Matrix3D.h"
 #include <Windows.h>
 #include <ppl.h>
-#include "..\..\GeneralCPP\Timer.h"
+#include "..\GeneralCPP\Timer.h"
 
 using namespace std;
 using namespace Concurrency;

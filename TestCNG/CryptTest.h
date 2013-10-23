@@ -1,6 +1,6 @@
 #pragma once
 #include "gtest.h"
-#include "..\..\CNG\CryptCypherOperation.h"
+#include "..\CNG\CryptCypherOperation.h"
 #include "Common.h"
 class CryptTest: public ::testing::Test 
 {

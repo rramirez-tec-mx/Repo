@@ -1,6 +1,6 @@
 #include "KeyStorageManagerTest.h"
-#include "..\..\CNG\KeyStorageManager.h"
-#include "..\..\CNG\CryptRandomNumberGenerator.h"
+#include "..\CNG\KeyStorageManager.h"
+#include "..\CNG\CryptRandomNumberGenerator.h"
 
 using namespace std;
 

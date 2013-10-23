@@ -1,8 +1,7 @@
 #include "HashingTest.h"
 #include <windows.h>
 #include <iostream>
-
-#include "..\..\GeneralCPP\Timer.h"
+#include "..\GeneralCPP\Timer.h"
 
 
 using namespace std;

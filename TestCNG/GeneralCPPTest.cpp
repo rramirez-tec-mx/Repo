@@ -4,9 +4,9 @@
 #include <iostream>
 #include <tchar.h>
 #include <sstream>
-#include "..\..\GeneralCPP\SimpleDataObject.h"
-#include "..\..\GeneralCPP\Timer.h"
-#include "..\..\GeneralCPP\SimplePOD.h"
+#include "..\GeneralCPP\SimpleDataObject.h"
+#include "..\GeneralCPP\Timer.h"
+#include "..\GeneralCPP\SimplePOD.h"
 #include <windows.h>
 #include <memory>
 #include <tchar.h>

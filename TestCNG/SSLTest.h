@@ -1,6 +1,6 @@
 #pragma once
 #include "gtest.h"
-#include "..\..\CNG\ssl.h"
+#include "..\CNG\ssl.h"
 
 class SSLTest: public ::testing::Test 
 {
