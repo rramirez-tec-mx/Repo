@@ -18,7 +18,6 @@ CryptTest::~CryptTest(void)
 TEST_F(CryptTest, CryptEncryptWithDESFromHashSecret) 
 {
 	
-	PUCHAR resultHash = NULL;
 	vector<BYTE> encryptedRawBYTEData;	
 	vector<BYTE> decryptedRawBYTEData;
 	wstring cryptAlgType = BCRYPT_DES_ALGORITHM;

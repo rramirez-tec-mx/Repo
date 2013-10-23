@@ -1,5 +1,5 @@
 #include "MemoryLeakListener.h"
-
+#pragma warning(disable:4127)
 
 CMemoryLeakListener::CMemoryLeakListener(void)
 {
@@ -10,7 +10,7 @@ CMemoryLeakListener::~CMemoryLeakListener(void)
 {
 }
 
-void CMemoryLeakListener::OnTestStart(const ::testing::TestInfo& test_info)
+void CMemoryLeakListener::OnTestStart(const ::testing::TestInfo& )
 {
 	_CrtMemCheckpoint( &memAtStart );
 }
@@ -36,17 +36,17 @@ void CMemoryLeakListener::CheckForMemLeaks(const ::testing::TestInfo& test_info)
 }
 
 
-int __cdecl printToStdErr(int reportType, char* szMsg, int* retVal){
+int __cdecl printToStdErr(int , char* szMsg, int* ){
  std::cerr << szMsg; 
  return 1; // No further processing required by _CrtDebugReport
 }
 
 
-void CMemoryLeakListener::OnTestProgramStart(const ::testing::UnitTest& unit_test)
+void CMemoryLeakListener::OnTestProgramStart(const ::testing::UnitTest& )
 {
 	_CrtSetReportHook2(_CRT_RPTHOOK_INSTALL, &printToStdErr);
 }
-void CMemoryLeakListener::OnTestProgramEnd(const ::testing::UnitTest& unit_test)
+void CMemoryLeakListener::OnTestProgramEnd(const ::testing::UnitTest& )
 {
 	_CrtSetReportHook2(_CRT_RPTHOOK_REMOVE, &printToStdErr);
 }

@@ -32,7 +32,7 @@ void CCryptEnumerator::PrintAlgorithm(unsigned long dwAlgOperations, char * mess
 }
 
 
-void CCryptEnumerator::PrintProvider(wstring & pszAlgId, char * message)
+void CCryptEnumerator::PrintProvider(wstring && pszAlgId, char * message)
 {
 	ULONG pImplCount = 0;
 	BCRYPT_PROVIDER_NAME *ppImplList = NULL;

@@ -89,9 +89,7 @@ TEST(CMatrix3DTest, TestPerfInterp3_repetitions)
 	std::vector<std::vector<double>> matrix3D;
 	std::vector<double> depthVector;
 
-	double interpPointX =2.789;
-	double interpPointY =2.215;
-	double interpPointZ =1.4578;
+
 
 	std::vector<double> xBreakPts, yBreakPts;
 	depthVector.push_back(1);

@@ -19,7 +19,6 @@ CHashingTest::~CHashingTest(void)
 
 TEST_F(CHashingTest, CalculateMD5Hash) 
 {		
-	PUCHAR resultHash = NULL;
 	wstring hashAlgType = BCRYPT_MD5_ALGORITHM;
 	int digestLength = 16;	
 	wstring hashHex;
@@ -31,7 +30,6 @@ TEST_F(CHashingTest, CalculateMD5Hash)
 
 TEST_F(CHashingTest, CalculateSHA1Hash) 
 {		
-	PUCHAR resultHash = NULL;
 	wstring hashAlgType = BCRYPT_SHA1_ALGORITHM;
 	int digestLength = 20;
 	wstring hashHex;
@@ -47,7 +45,6 @@ TEST_F(CHashingTest, CalculateSHA1Hash)
 
 TEST_F(CHashingTest, CalculateSHA256Hash) 
 {		
-	PUCHAR resultHash = NULL;
 	wstring hashAlgType = BCRYPT_SHA256_ALGORITHM;
 	int digestLength = 32;
 	wstring hashHex;
@@ -63,7 +60,6 @@ TEST_F(CHashingTest, CalculateSHA256Hash)
 
 TEST_F(CHashingTest, CalculateSHA384Hash) 
 {		
-	PUCHAR resultHash = NULL;
 	wstring hashAlgType = BCRYPT_SHA384_ALGORITHM;
 	int digestLength = 48;
 	wstring hashHex;
@@ -78,7 +74,6 @@ TEST_F(CHashingTest, CalculateSHA384Hash)
 
 TEST_F(CHashingTest, CalculateSHA512Hash) 
 {		
-	PUCHAR resultHash = NULL;
 	wstring hashAlgType = BCRYPT_SHA512_ALGORITHM;
 	int digestLength = 64;
 	wstring hashHex;

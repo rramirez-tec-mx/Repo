@@ -82,15 +82,13 @@ TEST(CNGConfigFunctionTest, TestHash)
    s1.assign((char*)&p1,len*sizeof(double));
    s2.assign((char*)&p2,3*sizeof(double));
 
-   long r1 = use_facet< collate<_TCHAR> > ( loc ).hash (s1.data(), s1.data()+s1.length());
-   long r2 =  use_facet< collate<_TCHAR> > ( loc ).hash (s2.data(), s2.data()+ s2.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s1.data(), s1.data()+s1.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s2.data(), s2.data()+ s2.length());
 
 
    CSimpleDataObject o1(2.5, 0.7, 1.0, 0, 7);
    CSimpleDataObject o2(2.5, 0.7, 1.5, 0, 0);
-   string s3,s4;
-   char *c1 = (char*)&p1;
-   char *c2 = (char*)&p2;
+   string s3, s4;
    s3.assign((_TCHAR*)&o1,sizeof(CSimpleDataObject));
    s4.assign((_TCHAR*)&o2,sizeof(CSimpleDataObject)); 
 
@@ -105,10 +103,10 @@ TEST(CNGConfigFunctionTest, TestHash)
 	   }
    }
 
-   long r3 = use_facet< collate<_TCHAR> > ( loc ).hash (s3.data(), s3.data()+s3.length());
-   long r4 =  use_facet< collate<_TCHAR> > ( loc ).hash (s4.data(), s4.data()+ s4.length());
-   long r5 =  use_facet< collate<_TCHAR> > ( loc ).hash (s5.data(), s5.data()+ s5.length());
-   long r6 =  use_facet< collate<_TCHAR> > ( loc ).hash (s6.data(), s6.data()+ s6.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s3.data(), s3.data()+s3.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s4.data(), s4.data()+ s4.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s5.data(), s5.data()+ s5.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s6.data(), s6.data()+ s6.length());
 
 
 
@@ -118,8 +116,8 @@ TEST(CNGConfigFunctionTest, TestHash)
    sprintf_s(b2,"%f%f",p2[0], p2[1]);
    string s7(b1);
    string s8(b2);
-   long r7 =  use_facet< collate<_TCHAR> > ( loc ).hash (s7.data(), s7.data()+ s7.length());
-   long r8 =  use_facet< collate<_TCHAR> > ( loc ).hash (s8.data(), s8.data()+ s8.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s7.data(), s7.data()+ s7.length());
+   use_facet< collate<_TCHAR> > ( loc ).hash (s8.data(), s8.data()+ s8.length());
       
 }
 
@@ -211,7 +209,6 @@ TEST(CNGConfigFunctionTest, TestDoubleVersusFloat)
 	double bfromCat = 1.471987469247834;
 	double cfromCat = 1.474228888474931;
 	double longdob = 99.5441117107108710;
-	float longdob2 = (float)longdob;
 	printf(" Conti fra double: %g\n", afromCat * bfromCat * cfromCat);
 	
 	printf(" Conti fra float: %f\n" , (float)afromCat * (float)bfromCat * (float)cfromCat);
