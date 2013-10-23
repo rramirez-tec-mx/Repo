@@ -6,14 +6,6 @@
 #include <sstream>
 #include "..\..\GeneralCPP\SimpleDataObject.h"
 #include "..\..\GeneralCPP\Timer.h"
-#include "..\..\GeneralCPP\IStrategy.h"
-#include "..\..\GeneralCPP\Strategy1.h"
-#include "..\..\GeneralCPP\Strategy2.h"
-#include "..\..\GeneralCPP\Strategy3.h"
-#include "..\..\GeneralCPP\Strategy4.h"
-#include "..\..\GeneralCPP\ExampleInheritanceDerivedOne.h"
-#include "..\..\GeneralCPP\ExampleInheritanceBase.h"
-#include "..\..\GeneralCPP\Evaluator.h"
 #include "..\..\GeneralCPP\SimplePOD.h"
 #include <windows.h>
 #include <memory>
@@ -181,46 +173,8 @@ TEST(CNGConfigFunctionTest, TestSwitchCase)
 	printf("scelta %d): risultato = %f\n", cmd, ret);
 }
 
-TEST(CNGConfigFunctionTest, TestSwitchCaseRef) 
-{
-	int cmd = 1;
-	float a = 4;
-	float b = 2;
-	float ret = 0;
 
-	IStrategy *strategy = new Strategy1();
-	strategy->DoAction(a, b, ret);
-	printf("scelta %d): risultato = %f\n", cmd, ret);
-	delete strategy;	
-}
 
-TEST(CNGConfigFunctionTest, TestInheritance) 
-{
-	ExampleInheritanceBase exampleBase;
-	ExampleInheritanceDerivedOne exampleIhneritanceOne;
-
-	int outPar1;
-	exampleBase.CalcRangeNumbers(outPar1, 27);
-	ASSERT_EQ(outPar1,27);
-
-	exampleIhneritanceOne.CalcRangeNumbers(outPar1, 59);
-	ASSERT_EQ(outPar1,5);
-
-	
-}
-
-TEST(CNGConfigFunctionTest, TestEvaluator) 
-{
-	Evaluator evaluator;
-	ExampleInheritanceBase exampleBase;
-	ExampleInheritanceDerivedOne exampleDerivedOne;
-	int retVal = evaluator.CalcParameter(exampleBase);
-	ASSERT_EQ(retVal, 26);
-
-	retVal = evaluator.CalcParameter(exampleDerivedOne);
-	ASSERT_EQ(retVal, 5);
-}
-	
 
 TEST(CNGConfigFunctionTest, TestUniquePtr) 
 {

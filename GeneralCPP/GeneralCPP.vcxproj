@@ -11,30 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Evaluator.cpp" />
-    <ClCompile Include="ExampleInheritanceBase.cpp" />
-    <ClCompile Include="ExampleInheritanceDerivedOne.cpp" />
-    <ClCompile Include="IStrategy.cpp" />
     <ClCompile Include="SimpleDataObject.cpp" />
     <ClCompile Include="SimplePOD.cpp" />
-    <ClCompile Include="Strategy1.cpp" />
-    <ClCompile Include="Strategy2.cpp" />
-    <ClCompile Include="Strategy3.cpp" />
-    <ClCompile Include="Strategy4.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Evaluator.h" />
-    <ClInclude Include="ExampleInheritanceBase.h" />
-    <ClInclude Include="ExampleInheritanceDerivedOne.h" />
-    <ClInclude Include="IStrategy.h" />
     <ClInclude Include="SimpleDataObject.h" />
     <ClInclude Include="SimplePOD.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Strategy1.h" />
-    <ClInclude Include="Strategy2.h" />
-    <ClInclude Include="Strategy3.h" />
-    <ClInclude Include="Strategy4.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>

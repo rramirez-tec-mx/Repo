@@ -2,7 +2,7 @@
 #include "SimpleDataObject.h"
 
 
-CSimpleDataObject::CSimpleDataObject(double frontRH, double rearRH, double uOnV, double m1, double m2):m_RHF(frontRH),m_RHR(rearRH),m_UonV(uOnV),m_1(m1), m_2(m2)
+CSimpleDataObject::CSimpleDataObject(double val1, double val2, double val3, double m1, double m2):m_val1(val1),m_val2(val2),m_val3(val3),m_1(m1), m_2(m2)
 {
 }
 
@@ -12,18 +12,18 @@ CSimpleDataObject::~CSimpleDataObject(void)
 }
 
 
-double CSimpleDataObject::GetRHF()
+double CSimpleDataObject::GetVal1()
 {
-	return m_RHF;
+	return m_val1;
 }
-double CSimpleDataObject::GetRHR()
+double CSimpleDataObject::GetVal2()
 {
-	return m_RHR;
+	return m_val2;
 }
 
-double CSimpleDataObject::GetUonV()
+double CSimpleDataObject::GetVal3()
 {
-	return m_UonV;
+	return m_val3;
 }
 
 void CSimpleDataObject::PassString(std::string mystring)

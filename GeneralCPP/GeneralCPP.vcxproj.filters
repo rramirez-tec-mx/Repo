@@ -21,30 +21,6 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IStrategy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Strategy1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Strategy2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Strategy3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Strategy4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExampleInheritanceBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExampleInheritanceDerivedOne.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Evaluator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SimplePOD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,30 +36,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IStrategy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Strategy1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Strategy2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Strategy3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Strategy4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ExampleInheritanceBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ExampleInheritanceDerivedOne.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Evaluator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SimplePOD.h">
