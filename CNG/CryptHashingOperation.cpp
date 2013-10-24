@@ -99,10 +99,11 @@ vector<unsigned char> CCryptHashingOperation::CreateHash(wstring messageToHash, 
 
 	vector<unsigned char> dest;
 	dest.resize(cbHash);
-	memcpy(&dest[0], pbHash, cbHash*sizeof(unsigned char));
+	
 
 	if(pbHash)
     {
+		memcpy(&dest[0], pbHash, cbHash*sizeof(unsigned char));
         HeapFree(GetProcessHeap(), 0, pbHash);
 		pbHash = nullptr;
     }

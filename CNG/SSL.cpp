@@ -57,3 +57,22 @@ void SSL::EnumCipherSuite(vector<wstring> & sslInfoCipherSuite, vector<wstring> 
 
 	SslFreeObject(hSslProvider, dwFlags);
 }
+
+void SSL::EnumProtocolProviders(DWORD & pdwProviderCount, NCryptProviderName *ppProviderList)
+{			
+	DWORD dwFlags = 0;
+	
+	SECURITY_STATUS ret;
+	
+	ret = SslEnumProtocolProviders(&pdwProviderCount, &ppProviderList, dwFlags);
+
+	if (ret != FALSE)
+	{
+		char  msgbuf[200];
+		sprintf_s(msgbuf, "SSL::SslEnumCipherSuites failed. Error: %ld\n", GetLastError());
+		OutputDebugStringA(msgbuf);
+	}
+
+	
+}
+

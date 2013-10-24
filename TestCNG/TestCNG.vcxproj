@@ -52,7 +52,7 @@
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <SDLCheck>true</SDLCheck>
+      <SDLCheck>false</SDLCheck>
       <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>

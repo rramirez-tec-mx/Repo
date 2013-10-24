@@ -15,14 +15,8 @@ using namespace std;
 
 #pragma intrinsic (memcpy)
 
-
-
 #define CAMPOOFFSET(type, field)    ((int)(&((type near*)1)->field)-1)
 #define FO(f) CAMPOOFFSET(SimplePOD, f)
-
-
-
-
 
 CGeneralCPPTest::CGeneralCPPTest(void)
 {
@@ -417,7 +411,22 @@ TEST(CNGConfigFunctionTest, TestCopyStringPerf)
 	for (size_t k =0; k< repetitions; k++)
 		obj.PassStringByRef(message);
 
-	timer.GetElapsedTimeInMicros();
+	timer.GetElapsedTimeInMicros();	
+}
 
-	
+
+TEST(CNGConfigFunctionTest, TestSScanf_dest_lower_than_source_secure)
+{
+	char *src = "ciaociao";
+	char out[4];
+	sscanf_s(src, "%s", out, _countof(out));
+	ASSERT_STREQ(out, "");
+}
+
+TEST(CNGConfigFunctionTest, TestSScanf_dest_bigger_than_source_secure)
+{
+	char *src = "ciaociao";
+	char out[20];
+	sscanf_s(src, "%s", out, _countof(out));
+	ASSERT_STREQ(out, "ciaociao");
 }
