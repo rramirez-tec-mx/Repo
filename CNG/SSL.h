@@ -11,6 +11,6 @@ public:
 	~SSL(void);
 
 	void EnumCipherSuite(std::vector<std::wstring> & sslInfoCipherSuite, std::vector<std::wstring> & sslInfoCipher);
-	void EnumProtocolProviders(DWORD & pdwProviderCount, NCryptProviderName *ppProviderList);
+	void EnumProtocolProviders(DWORD & pdwProviderCount, NCryptProviderName **ppProviderList);
 };
 

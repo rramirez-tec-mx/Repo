@@ -27,10 +27,11 @@ TEST_F(SSLTest, test_SSLEnumCipherSuite)
 TEST_F(SSLTest, test_SSLEnumProtocolProviders)
 {
 	SSL ssl;
-	DWORD pdwProviderCount;		
+	DWORD pdwProviderCount;			
 	NCryptProviderName *ppProviderList = nullptr;
-	ssl.EnumProtocolProviders(pdwProviderCount, ppProviderList);
+	ssl.EnumProtocolProviders(pdwProviderCount, &ppProviderList);
 
 	ASSERT_EQ(pdwProviderCount, 1);
-	ASSERT_STREQ(ppProviderList->pszName, (LPWSTR)"ciaicao");
+	wstring name = ppProviderList->pszName;
+	ASSERT_STREQ(name.c_str(), L"Microsoft SSL Protocol Provider");
 }

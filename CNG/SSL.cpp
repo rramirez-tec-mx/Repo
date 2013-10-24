@@ -58,13 +58,13 @@ void SSL::EnumCipherSuite(vector<wstring> & sslInfoCipherSuite, vector<wstring> 
 	SslFreeObject(hSslProvider, dwFlags);
 }
 
-void SSL::EnumProtocolProviders(DWORD & pdwProviderCount, NCryptProviderName *ppProviderList)
+void SSL::EnumProtocolProviders(DWORD & pdwProviderCount, NCryptProviderName **ppProviderList)
 {			
 	DWORD dwFlags = 0;
 	
 	SECURITY_STATUS ret;
 	
-	ret = SslEnumProtocolProviders(&pdwProviderCount, &ppProviderList, dwFlags);
+	ret = SslEnumProtocolProviders(&pdwProviderCount, ppProviderList, dwFlags);
 
 	if (ret != FALSE)
 	{
