@@ -66,7 +66,10 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y ..\3rdparty\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
+xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\MinGW\libgcc_s_dw2-1.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\MinGW\libgfortran-3.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\MinGW\libquadmath-0.dll $(SolutionDir)$(ConfigurationName)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -89,7 +92,10 @@ xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(C
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y ..\3rdparty\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)</Command>
+xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\MinGW\libgcc_s_dw2-1.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\MinGW\libgfortran-3.dll $(SolutionDir)$(ConfigurationName)
+xcopy /y ..\3rdparty\MinGW\libquadmath-0.dll $(SolutionDir)$(ConfigurationName)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
