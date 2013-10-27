@@ -15,7 +15,7 @@ CCryptEnumerator::~CCryptEnumerator(void)
 {
 }
 
-void CCryptEnumerator::PrintAlgorithm(unsigned long dwAlgOperations, char * message)
+void CCryptEnumerator::PrintAlgorithm(unsigned long dwAlgOperations, const string & message)
 {
 	ULONG pAlgCount = 0;
 	BCRYPT_ALGORITHM_IDENTIFIER *ppAlgList = NULL;
@@ -26,13 +26,13 @@ void CCryptEnumerator::PrintAlgorithm(unsigned long dwAlgOperations, char * mess
   
 	for (ULONG i=0; i < pAlgCount; i++)
 	{
-		printf("%s %d: %ws\n",message,i, ppAlgList[i].pszName);
+		printf("%s %d: %ws\n", message.c_str(), i, ppAlgList[i].pszName);
 	}
 	BCryptFreeBuffer(ppAlgList);
 }
 
 
-void CCryptEnumerator::PrintProvider(wstring && pszAlgId, char * message)
+void CCryptEnumerator::PrintProvider(wstring && pszAlgId, const string & message)
 {
 	ULONG pImplCount = 0;
 	BCRYPT_PROVIDER_NAME *ppImplList = NULL;
@@ -43,7 +43,7 @@ void CCryptEnumerator::PrintProvider(wstring && pszAlgId, char * message)
 
 	for (ULONG i=0; i < pImplCount; i++)
 	{
-		printf("%s %d: %ws\n",message,i, ppImplList[i].pszProviderName);
+		printf("%s %d: %ws\n", message.c_str(), i, ppImplList[i].pszProviderName);
 	}
 
 	BCryptFreeBuffer(ppImplList);

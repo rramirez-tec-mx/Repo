@@ -1,5 +1,5 @@
 #include "MemoryLeakListener.h"
-#pragma warning(disable:4127)
+
 
 CMemoryLeakListener::CMemoryLeakListener(void)
 {
@@ -27,7 +27,9 @@ void CMemoryLeakListener::CheckForMemLeaks(const ::testing::TestInfo& test_info)
     _CrtMemState memAtEnd;memAtEnd;
     _CrtMemCheckpoint( &memAtEnd );
     _CrtMemState memDiff;memDiff;
-    if ( _CrtMemDifference( &memDiff, &memAtStart, &memAtEnd))
+
+	int ret = _CrtMemDifference(&memDiff, &memAtStart, &memAtEnd);
+    if (ret)
 	{
         _CrtMemDumpStatistics( &memDiff );
 		_CrtMemDumpAllObjectsSince(&memAtStart);

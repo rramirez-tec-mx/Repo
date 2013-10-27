@@ -26,7 +26,7 @@ TEST(CNGConfigFunctionTest, CheckFipsIsEnabled)
 TEST(CNGConfigFunctionTest, EnumCryptoAlgorithm) 
 {
 	CCryptEnumerator cryptEnumerator;
-	char *message = "algoritmo di cifratura";
+	string message = "algoritmo di cifratura";
 	cryptEnumerator.PrintAlgorithm(BCRYPT_CIPHER_OPERATION,  message);
 
 	message = "algoritmo di hashing";
@@ -48,7 +48,7 @@ TEST(CNGConfigFunctionTest, EnumCryptoAlgorithm)
 TEST(CNGConfigFunctionTest, EnumCryptoProvider)
 {
 	CCryptEnumerator cryptEnumerator;
-	char *message = "provider 3DES";
+	string message = "provider 3DES";
 	cryptEnumerator.PrintProvider(wstring(BCRYPT_3DES_ALGORITHM), message);
 
 	message = "provider 3DES_112";

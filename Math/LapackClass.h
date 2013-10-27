@@ -11,7 +11,7 @@ public:
 
 	void calcMatrix();
 	void calcMatrix2(double *matrixC);	
-	void calcMatrixProduct(CMatrix& A, std::vector<double> & B, std::vector<double> & C, int columnsOfMatrixB, char transposeA, char transposeB);
+	void calcMatrixProduct(CMatrix & A, std::vector<double> & B, std::vector<double> & C, int columnsOfMatrixB, char transposeA, char transposeB);
 	void InvertMatrix(std::vector<double> & flattenMatrix);
 };
 
