@@ -10,6 +10,6 @@ public:
 	~CryptRandomNumberGenerator(void);
 
 public:
-	std::wstring Generate(std::wstring algType, int lengthRandomByteArray);
+	std::wstring Generate(const std::wstring & algType, int lengthRandomByteArray);
 };
 

@@ -9,6 +9,6 @@ public:
 	StringHelper(void);
 	~StringHelper(void);
 public:
-	std::wstring ConvertByteArrayToString(PUCHAR byteArray, const int arrayLength);
+	std::wstring ConvertByteArrayToString(const PUCHAR & byteArray, const int arrayLength);
 };
 

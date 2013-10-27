@@ -32,7 +32,7 @@ void CKeyStorageManager::EnumStorageProvider(vector<wstring> & listOfProvider)
 	NCryptFreeBuffer(ppProviderList);		
 }
 
-NCRYPT_PROV_HANDLE CKeyStorageManager::OpenStorageProvider(wstring providerName)
+NCRYPT_PROV_HANDLE CKeyStorageManager::OpenStorageProvider(const wstring & providerName)
 {
 	SECURITY_STATUS ret;
 	DWORD dwFlags = 0;

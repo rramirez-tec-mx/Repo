@@ -14,7 +14,7 @@ CryptRandomNumberGenerator::~CryptRandomNumberGenerator(void)
 {
 }
 
-wstring CryptRandomNumberGenerator::Generate(wstring algType, int lengthRandomByteArray)
+wstring CryptRandomNumberGenerator::Generate(const wstring & algType, int lengthRandomByteArray)
 {
 	BCRYPT_ALG_HANDLE hAlgorithm = NULL;
 	StringHelper stringHelper;

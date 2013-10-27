@@ -16,7 +16,7 @@ StringHelper::~StringHelper(void)
 }
 
 
-wstring StringHelper::ConvertByteArrayToString(PUCHAR byteArray, const int arrayLength)
+wstring StringHelper::ConvertByteArrayToString(const PUCHAR & byteArray, const int arrayLength)
 {
     wstring ret = L"";
 	if(byteArray)
