@@ -17,7 +17,7 @@ CryptCypherOperation::~CryptCypherOperation(void)
 }
 
 
-vector<BYTE> CryptCypherOperation::EncryptData(wstring cryptAlgType, const int lenPlainText, BYTE *plainText, ULONG & lenCypherText, wstring passPhrase)
+vector<BYTE> CryptCypherOperation::EncryptData(const wstring & cryptAlgType, const int lenPlainText, BYTE *plainText, ULONG & lenCypherText, const wstring & passPhrase)
 {
 	NTSTATUS ret;	
 	BCRYPT_KEY_HANDLE hKey = NULL;	
@@ -36,7 +36,7 @@ vector<BYTE> CryptCypherOperation::EncryptData(wstring cryptAlgType, const int l
 	return cypherText;
 }
 
-vector<BYTE> CryptCypherOperation::DecryptData(wstring cryptAlgType, const int lenCypherText, BYTE *cypherText, wstring passPhrase)
+vector<BYTE> CryptCypherOperation::DecryptData(const wstring & cryptAlgType, const int lenCypherText, BYTE *cypherText, const wstring & passPhrase)
 {
 	NTSTATUS ret;
 	BCRYPT_KEY_HANDLE hKey = NULL;
@@ -55,7 +55,7 @@ vector<BYTE> CryptCypherOperation::DecryptData(wstring cryptAlgType, const int l
 	return decypherText;
 }
 
-BCRYPT_KEY_HANDLE CryptCypherOperation::GenerateSimmetricKeyFromPassPhrase(wstring cryptAlgTypeForSecret, int digestLength, wstring passPhrase, wstring cryptAlgTypeForEncryption)
+BCRYPT_KEY_HANDLE CryptCypherOperation::GenerateSimmetricKeyFromPassPhrase(const wstring & cryptAlgTypeForSecret, int digestLength, const wstring & passPhrase, const wstring & cryptAlgTypeForEncryption)
 {
 	NTSTATUS ret;	
 	BCRYPT_ALG_HANDLE hAlgorithm;	

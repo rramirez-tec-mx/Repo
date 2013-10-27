@@ -15,7 +15,7 @@ CCryptHashingOperation::~CCryptHashingOperation(void)
 {
 }
 
-wstring CCryptHashingOperation::CalcHashInHexForm(wstring messageToHash, wstring hashAlgType, int digestLength)
+wstring CCryptHashingOperation::CalcHashInHexForm(const wstring & messageToHash, const wstring & hashAlgType, int digestLength)
 {
 	StringHelper stringHelper;
 	vector<unsigned char> resultHash;
@@ -25,7 +25,7 @@ wstring CCryptHashingOperation::CalcHashInHexForm(wstring messageToHash, wstring
 	return resultHashToHex;
 }
 
-vector<unsigned char> CCryptHashingOperation::CalcRawHash(wstring messageToHash, wstring hashAlgType)
+vector<unsigned char> CCryptHashingOperation::CalcRawHash(const wstring & messageToHash, const wstring & hashAlgType)
 {
 	vector<unsigned char> resultHash;
 	resultHash = CreateHash(messageToHash, hashAlgType);
@@ -33,7 +33,7 @@ vector<unsigned char> CCryptHashingOperation::CalcRawHash(wstring messageToHash,
 	
 }
 
-vector<unsigned char> CCryptHashingOperation::CreateHash(wstring messageToHash, wstring hashAlgType)
+vector<unsigned char> CCryptHashingOperation::CreateHash(const wstring & messageToHash, const wstring & hashAlgType)
 {
 	BCRYPT_ALG_HANDLE phAlgorithm;
 	BCRYPT_HASH_HANDLE hHash = NULL;
@@ -112,7 +112,7 @@ vector<unsigned char> CCryptHashingOperation::CreateHash(wstring messageToHash, 
 
 }
 
-vector<unsigned char> CCryptHashingOperation::ConvertWStringToArrayOfByte(wstring stringToConvert)
+vector<unsigned char> CCryptHashingOperation::ConvertWStringToArrayOfByte(const wstring & stringToConvert)
 {
 	size_t lenBuffer = stringToConvert.size();
 	
