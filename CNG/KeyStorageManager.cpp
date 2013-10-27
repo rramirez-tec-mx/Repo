@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "KeyStorageManager.h"
-
+#include "..\Log\LogOutputDebugString.h"
 using namespace std;
 
 CKeyStorageManager::CKeyStorageManager(void)
@@ -47,9 +47,7 @@ void CKeyStorageManager::CreatePersistedKey(NCRYPT_PROV_HANDLE hProvider, NCRYPT
 	ret = NCryptCreatePersistedKey(hProvider, phKey, pszAlgId.c_str(), pszKeyName.c_str(), dwLegacyKeySpec, dwFlags);
 	if(ret != FALSE)
 	{
-		char  msgbuf[200];
-		sprintf_s(msgbuf, "CKeyStorageManager::CreatePersistedKey failed. Error: %ld\n", GetLastError());
-		OutputDebugStringA(msgbuf);
+		LogOutputDebugString::LogMessage("CKeyStorageManager::CreatePersistedKey failed ", GetLastError(), ret);
 	}
 }
 
@@ -59,9 +57,7 @@ void CKeyStorageManager::FinalizePersistedKey(NCRYPT_KEY_HANDLE hKey)
 	ret = NCryptFinalizeKey(hKey, 0);
 	if(ret != FALSE)
 	{
-		char  msgbuf[200];
-		sprintf_s(msgbuf, "CKeyStorageManager::CreatePersistedKey failed. Error: %ld\n", GetLastError());
-		OutputDebugStringA(msgbuf);
+		LogOutputDebugString::LogMessage("CKeyStorageManager::FinalizePersistedKey failed ", GetLastError(), ret);
 	}
 }
 
@@ -72,9 +68,7 @@ void CKeyStorageManager::OpenExistingPersistedKey(NCRYPT_PROV_HANDLE hProvider, 
 	ret =  NCryptOpenKey(hProvider, phKey, pszKeyName.c_str(), dwLegacyKeySpec, dwFlags);
 	if(ret != FALSE)
 	{
-		char  msgbuf[200];
-		sprintf_s(msgbuf, "CKeyStorageManager::OpenExistingPersistedKey failed. Error: %ld\n", GetLastError());
-		OutputDebugStringA(msgbuf);
+		LogOutputDebugString::LogMessage("CKeyStorageManager::OpenExistingPersistedKey failed ", GetLastError(), ret);
 	}
 }
 
@@ -85,8 +79,6 @@ void CKeyStorageManager::DeleteExistingPersistedKey(NCRYPT_KEY_HANDLE hKey, DWOR
 	ret =  NCryptDeleteKey(hKey, dwFlags);
 	if(ret != FALSE)
 	{
-		char  msgbuf[200];
-		sprintf_s(msgbuf, "CKeyStorageManager::DeleteExistingPersistedKey failed. Error: %ld\n", GetLastError());
-		OutputDebugStringA(msgbuf);
+		LogOutputDebugString::LogMessage("CKeyStorageManager::DeleteExistingPersistedKey failed ", GetLastError(), ret);
 	}
 }

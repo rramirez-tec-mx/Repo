@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <bcrypt.h>
 #include <Sslprovider.h>
-
+#include "..\Log\LogOutputDebugString.h"
 using namespace std;
 
 SSL::SSL(void)
@@ -30,14 +30,15 @@ void SSL::EnumCipherSuite(vector<wstring> & sslInfoCipherSuite, vector<wstring> 
 
 	if(ret != FALSE)
 	{
-		char  msgbuf[200];
-		sprintf_s(msgbuf, "SSL::SslOpenProvider failed. Error: %ld\n", GetLastError());
-		OutputDebugStringA(msgbuf);
+		LogOutputDebugString::LogMessage("SSL::SslOpenProvider failed ", GetLastError(), ret);
 	}
 
-
-	
 	ret = SslEnumCipherSuites(hSslProvider, NULL, &ppCipherSuite, &ppEnumState ,dwFlags);
+
+	if (ret != FALSE)
+	{
+		LogOutputDebugString::LogMessage("SSL::SslEnumCipherSuites failed ", GetLastError(), ret);
+	}
 
 	while (ret != NTE_NO_MORE_ITEMS)
 	{
@@ -46,13 +47,6 @@ void SSL::EnumCipherSuite(vector<wstring> & sslInfoCipherSuite, vector<wstring> 
 		sslInfoCipherSuite.push_back(ppCipherSuite->szCipherSuite);
 		sslInfoCipher.push_back(ppCipherSuite->szCipher);
 		
-	}
-
-	if(ret != FALSE)
-	{
-		char  msgbuf[200];
-		sprintf_s(msgbuf, "SSL::SslEnumCipherSuites failed. Error: %ld\n", GetLastError());
-		OutputDebugStringA(msgbuf);
 	}
 
 	SslFreeObject(hSslProvider, dwFlags);
@@ -68,11 +62,7 @@ void SSL::EnumProtocolProviders(DWORD & pdwProviderCount, NCryptProviderName **p
 
 	if (ret != FALSE)
 	{
-		char  msgbuf[200];
-		sprintf_s(msgbuf, "SSL::SslEnumCipherSuites failed. Error: %ld\n", GetLastError());
-		OutputDebugStringA(msgbuf);
+		LogOutputDebugString::LogMessage("SSL::EnumProtocolProviders failed ", GetLastError(), ret);
 	}
-
-	
 }
 

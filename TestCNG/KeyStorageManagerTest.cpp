@@ -43,6 +43,7 @@ TEST_F(CKeyStorageManagerTest, CreatePeristedKeyTest)
 	wstring pszKeyName = L"TestCNG_AES_KEY";
 	DWORD dwLegacyKeySpec = 0;
 	DWORD dwFlags = 0;
+	
 
 	provHandle = manager.OpenStorageProvider(MS_KEY_STORAGE_PROVIDER);
 	manager.CreatePersistedKey(provHandle, &hKey, pszAlgId, pszKeyName, dwLegacyKeySpec, dwFlags);
