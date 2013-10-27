@@ -7,6 +7,7 @@
 #include "..\GeneralCPP\SimpleDataObject.h"
 #include "..\GeneralCPP\Timer.h"
 #include "..\GeneralCPP\SimplePOD.h"
+#include "..\GeneralCPP\Singleton.h"
 #include <windows.h>
 #include <memory>
 #include <tchar.h>
@@ -429,4 +430,11 @@ TEST(CNGConfigFunctionTest, TestSScanf_dest_bigger_than_source_secure)
 	char out[20];
 	sscanf_s(src, "%s", out, _countof(out));
 	ASSERT_STREQ(out, "ciaociao");
+}
+
+TEST(CNGConfigFunctionTest, TestSingleton)
+{
+	Singleton *sc1;
+	sc1 = Singleton::getInstance();
+	Singleton::DestroyInstance();
 }
