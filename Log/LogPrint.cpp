@@ -6,7 +6,7 @@ using namespace std;
 
 string LogPrint::OutMessage(char* formatString, bool display, ...)
 {
-	char buffer[15];
+	char buffer[30];
 	va_list args;
 	va_start(args, display);	
 	_vsnprintf_s(buffer, _countof(buffer), _TRUNCATE, formatString, args);
