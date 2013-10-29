@@ -22,7 +22,7 @@ void SSL::EnumCipherSuite(vector<wstring> & sslInfoCipherSuite, vector<wstring> 
 	PVOID ppEnumState = NULL;
     DWORD dwFlags =0;
 
-	LPCWSTR pszProviderName = NULL;
+	LPCWSTR pszProviderName = L"";
 
 	SECURITY_STATUS ret;
 

@@ -79,7 +79,8 @@ vector<unsigned char> CCryptHashingOperation::CreateHash(const wstring & message
 	res = BCryptHashData(hHash, &pbBufferCast[0],lenBuffer,0);
  //   
  //   //close the hash
-	res = BCryptFinishHash(hHash, pbHash, cbHash, 0);
+	if (NULL != pbHash)
+		res = BCryptFinishHash(hHash, pbHash, cbHash, 0);
 
 	//
     if(phAlgorithm)
