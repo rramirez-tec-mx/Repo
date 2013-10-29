@@ -227,6 +227,7 @@ TEST(CNGConfigFunctionTest, TestMemCpyPerformance)
 
 	int size = 400;
 	in = new double[size];
+	memset(in, 0, size*sizeof(double));
 	out1.resize(size);
 	CTimer timer;
 	timer.Start();
@@ -237,6 +238,7 @@ TEST(CNGConfigFunctionTest, TestMemCpyPerformance)
 
 	size = 3000;
 	in = new double[size];
+	memset(in, 0, size*sizeof(double));
 	out2.resize(size);	
 	timer.Start();
 	memcpy(&out2[0], in, size*sizeof(double));	
@@ -255,8 +257,11 @@ TEST(CNGConfigFunctionTest, TestPerf1)
 	for(int i=0;i < 10000;i++)
 	{
 		a = new double[100];
+		memset(a, 0, 100*sizeof(double));
 		b = new double[100];
+		memset(b, 0, 100 * sizeof(double));
 		c = new double[100];
+		memset(c, 0, 100 * sizeof(double));
 
 		for (int j=0; j< 100; j++)
 		{
