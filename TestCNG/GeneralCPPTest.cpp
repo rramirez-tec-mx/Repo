@@ -8,10 +8,13 @@
 #include "..\GeneralCPP\Timer.h"
 #include "..\GeneralCPP\SimplePOD.h"
 #include "..\GeneralCPP\Singleton.h"
+#include "..\GeneralCPP\WindowsVersion.h"
 #include <windows.h>
 #include <memory>
 #include <tchar.h>
 #include <algorithm>
+#include <map>
+
 using namespace std;
 
 #pragma intrinsic (memcpy)
@@ -444,6 +447,21 @@ TEST(CNGConfigFunctionTest, TestSingleton)
 	Singleton::DestroyInstance();
 }
 
-TEST(CNGConfigFunctionTest, TestvnPrintf)
+
+TEST(CNGConfigFunctionTest, TestGetVersion)
 {
+	map<size_t, bool> enumVersion = WindowsVersion().FillMapOfWindowsVersion();
+	
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINXP_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINXP_SP2_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINXP_SP3_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINVISTA_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINVISTA_SP1_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINVISTA_SP2_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINSEVEN_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINSEVEN_SP1_OR_GREATER]);
+	ASSERT_EQ(true, enumVersion[WindowsVersion::WINEIGHT_OR_GREATER]);
+	ASSERT_EQ(false, enumVersion[WindowsVersion::WINEIGHT_POINT1_OR_GREATER]);
+	ASSERT_EQ(false, enumVersion[WindowsVersion::WIN_SERVER]);
 }
+

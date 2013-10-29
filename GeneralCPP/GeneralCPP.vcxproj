@@ -15,6 +15,7 @@
     <ClCompile Include="SimplePOD.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="WindowsVersion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneralCPPExport.h" />
@@ -24,6 +25,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="WindowsVersion.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B2534317-5957-47FC-BBD6-EFDDFE3A748F}</ProjectGuid>
