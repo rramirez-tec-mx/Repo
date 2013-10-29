@@ -21,9 +21,15 @@
     <ClInclude Include="LogApi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LogPrint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogOutputDebugString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogPrint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

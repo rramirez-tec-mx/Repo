@@ -91,6 +91,7 @@
     <ClInclude Include="GeneralCPPTest.h" />
     <ClInclude Include="HashingTest.h" />
     <ClInclude Include="KeyStorageManagerTest.h" />
+    <ClInclude Include="LogTest.h" />
     <ClInclude Include="Matrix3DTest.h" />
     <ClInclude Include="MemoryLeakListener.h" />
     <ClInclude Include="QoS2Test.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="GeneralCPPTest.cpp" />
     <ClCompile Include="HashingTest.cpp" />
     <ClCompile Include="KeyStorageManagerTest.cpp" />
+    <ClCompile Include="LogTest.cpp" />
     <ClCompile Include="Matrix3DTest.cpp" />
     <ClCompile Include="MemoryLeakListener.cpp" />
     <ClCompile Include="QoS2Test.cpp" />
@@ -125,6 +127,9 @@
     </ProjectReference>
     <ProjectReference Include="..\GeneralCPP\GeneralCPP.vcxproj">
       <Project>{b2534317-5957-47fc-bbd6-efddfe3a748f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Log\Log.vcxproj">
+      <Project>{b8c8d320-42c8-46e5-bdce-c8dd919d2d0c}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Math\Math.vcxproj">
       <Project>{fb3cb6f9-e02f-43ed-b8a0-586e3aa13838}</Project>

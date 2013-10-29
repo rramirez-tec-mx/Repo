@@ -438,3 +438,7 @@ TEST(CNGConfigFunctionTest, TestSingleton)
 	sc1 = Singleton::getInstance();
 	Singleton::DestroyInstance();
 }
+
+TEST(CNGConfigFunctionTest, TestvnPrintf)
+{
+}

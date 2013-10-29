@@ -72,9 +72,11 @@
   <ItemGroup>
     <ClInclude Include="LogApi.h" />
     <ClInclude Include="LogOutputDebugString.h" />
+    <ClInclude Include="LogPrint.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LogOutputDebugString.cpp" />
+    <ClCompile Include="LogPrint.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
