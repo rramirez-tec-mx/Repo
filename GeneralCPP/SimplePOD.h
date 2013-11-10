@@ -97,8 +97,5 @@ public:
 	float m_88;
 	float m_89;
 	float m_90;
-
-	
-	
 };
 

@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SalStuff.cpp" />
     <ClCompile Include="SimpleDataObject.cpp" />
     <ClCompile Include="SimplePOD.cpp" />
     <ClCompile Include="Singleton.cpp" />
@@ -19,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneralCPPExport.h" />
+    <ClInclude Include="SalStuff.h" />
     <ClInclude Include="SimpleDataObject.h" />
     <ClInclude Include="SimplePOD.h" />
     <ClInclude Include="Singleton.h" />

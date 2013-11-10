@@ -9,6 +9,7 @@
 #include "..\GeneralCPP\SimplePOD.h"
 #include "..\GeneralCPP\Singleton.h"
 #include "..\GeneralCPP\WindowsVersion.h"
+#include "..\GeneralCPP\SalStuff.h"
 #include <windows.h>
 #include <memory>
 #include <tchar.h>
@@ -465,3 +466,14 @@ TEST(CNGConfigFunctionTest, TestGetVersion)
 	ASSERT_EQ(false, enumVersion[WindowsVersion::WIN_SERVER]);
 }
 
+TEST(CNGConfigFunctionTest, testSal)
+{
+	/*
+	double *pp;
+	pp = new double[1];
+	std::unique_ptr<double[]> p;
+	p = std::unique_ptr<double[]>(new double[1]);
+	*/
+	
+	testRetValue();
+}
