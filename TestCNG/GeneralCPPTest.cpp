@@ -287,23 +287,23 @@ TEST(CNGConfigFunctionTest, TestPerf2)
 	double *a;
 	double *b;
 	double *c;
-
+	size_t len = 100;
 	CTimer timer;
 	timer.Start();
-	a = new double[100];
-	b = new double[100];
-	c = new double[100];
-	for(int i=0;i < 10000;i++)
-	{
-		
+	a = new double[len];
+	b = new double[len];
+	c = new double[len];
+	memset(a, 0, len * sizeof(double));
+	memset(b, 0, len * sizeof(double));
+	memset(c, 0, len * sizeof(double));
 
-		for (int j=0; j< 100; j++)
+	for(int i=0;i < 10000;i++)
+	{		
+		for (size_t j = 0; j< len; j++)
 		{
 			a[j] = b[j]*c[j];
 			a[j] = 6*b[j];
-		}
-
-		
+		}		
 	}
 	delete[] a;
 	delete[] b;
@@ -466,6 +466,8 @@ TEST(CNGConfigFunctionTest, TestGetVersion)
 	ASSERT_EQ(false, enumVersion[WindowsVersion::WIN_SERVER]);
 }
 
+
+
 TEST(CNGConfigFunctionTest, testSal)
 {
 	/*
@@ -474,6 +476,8 @@ TEST(CNGConfigFunctionTest, testSal)
 	std::unique_ptr<double[]> p;
 	p = std::unique_ptr<double[]>(new double[1]);
 	*/
+		
+	testRetValue(true);
 	
-	testRetValue();
+	
 }

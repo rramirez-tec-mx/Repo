@@ -11,5 +11,5 @@ public:
 
 };
 
-GENERALCPP_EXPORTS_API _Must_inspect_result_ bool testRetValue();
+GENERALCPP_EXPORTS_API _Must_inspect_result_ bool testRetValue(bool b);
 
