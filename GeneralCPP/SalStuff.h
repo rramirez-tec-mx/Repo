@@ -11,5 +11,10 @@ public:
 
 };
 
-GENERALCPP_EXPORTS_API _Must_inspect_result_ bool testRetValue(bool b);
+_Check_return_ bool func();
+
+GENERALCPP_EXPORTS_API  _Check_return_ int testRetValue(_In_ int& t);
+
+bool testRetValue1(bool b);
+
 

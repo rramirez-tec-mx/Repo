@@ -468,16 +468,16 @@ TEST(CNGConfigFunctionTest, TestGetVersion)
 
 
 
-TEST(CNGConfigFunctionTest, testSal)
-{
-	/*
-	double *pp;
-	pp = new double[1];
-	std::unique_ptr<double[]> p;
-	p = std::unique_ptr<double[]>(new double[1]);
-	*/
-		
-	testRetValue(true);
+TEST(CNGConfigFunctionTest, testUnsecureApiWithBug)
+{			
+	int paneId ;
+	int Count = 0;
+	LPCSTR line = " pane10 = 70 ciao ciao";
+#pragma warning(disable:4996) // attenzione al bug del % dopo il secondo %d se si usa secure api si nota..
+	if (_stscanf((LPCSTR)line, _T(" pane%d = %d%"), &paneId, &Count)) {}
 	
-	
+	ASSERT_EQ(paneId, 10);
+	ASSERT_EQ(Count, 70);
+
+	testRetValue(paneId);
 }
