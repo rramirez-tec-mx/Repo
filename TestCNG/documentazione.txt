@@ -5,3 +5,12 @@
 
 // windows error code
 http://msdn.microsoft.com/en-us/library/cc231196.aspx
+
+
+_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES
+
+//crt secure
+http://msdn.microsoft.com/en-us/library/wd3wzwts(v=vs.110).aspx
+
+//interessante studiare questi aspetti, ovvero le macro che sostituiscono le api insecure con quelle secure
+http://msdn.microsoft.com/en-us/library/ms175759(v=vs.110).aspx
