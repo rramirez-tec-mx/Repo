@@ -21,7 +21,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
     auto &listeners = ::testing::UnitTest::GetInstance()->listeners();
 	
-    listeners.Append(new CMemoryLeakListener);
+	listeners.Append(new CMemoryLeakListener{});
 
     int result = RUN_ALL_TESTS();
     return result;
