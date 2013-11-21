@@ -14,3 +14,6 @@ http://msdn.microsoft.com/en-us/library/wd3wzwts(v=vs.110).aspx
 
 //interessante studiare questi aspetti, ovvero le macro che sostituiscono le api insecure con quelle secure
 http://msdn.microsoft.com/en-us/library/ms175759(v=vs.110).aspx
+
+//doc su mem leak
+http://msdn.microsoft.com/en-us/library/e5ewb1h3(v=vs.90).aspx
