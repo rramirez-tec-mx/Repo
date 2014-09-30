@@ -228,24 +228,23 @@ TEST(CNGConfigFunctionTest, TestMemCpyPerformance)
 {
 	double *in;
 	vector<double> out1,out2;
-
-	int size = 400;
-	in = new double[size];
-	memset(in, 0, size*sizeof(double));
-	out1.resize(size);
+	CSimpleDataObject dobj;
+	size_t size = 3000;
 	CTimer timer;
-	timer.Start();
-	memcpy(&out1[0], in, size*sizeof(double));	
-	timer.GetElapsedTimeInMicros();
-	delete[] in;
-
-
-	size = 3000;
 	in = new double[size];
 	memset(in, 0, size*sizeof(double));
 	out2.resize(size);	
 	timer.Start();
 	memcpy(&out2[0], in, size*sizeof(double));	
+	timer.GetElapsedTimeInMicros();
+	delete[] in;
+
+	in = new double[size];
+	memset(in, 0, size*sizeof(double));
+	out2.resize(size);
+	timer.Start();
+
+	dobj.X_aligned_memcpy_sse2(&out2[0], in, size*sizeof(double));
 	timer.GetElapsedTimeInMicros();
 	delete[] in;
 }

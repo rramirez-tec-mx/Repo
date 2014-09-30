@@ -5,6 +5,7 @@
 class GENERALCPP_EXPORTS_API CSimpleDataObject
 {
 public:
+	CSimpleDataObject();
 	CSimpleDataObject(double val1, double val2, double val3, double m1, double m2);
 	~CSimpleDataObject(void);
 
@@ -12,6 +13,7 @@ public:
 
 	void PassString(std::string mystring);
 	void PassStringByRef(const std::string & mystring);
+	void X_aligned_memcpy_sse2(void* dest, const void* src, const unsigned long size_t);
 
 private :
 	double m_val1;
