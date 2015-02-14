@@ -11,11 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BlasClass.cpp" />
     <ClCompile Include="LapackClass.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Matrix3D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlasClass.h" />
     <ClInclude Include="LapackClass.h" />
     <ClInclude Include="MathApi.h" />
     <ClInclude Include="Matrix.h" />

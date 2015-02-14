@@ -104,6 +104,7 @@
     <ClInclude Include="RNGTest.h" />
     <ClInclude Include="SSLTest.h" />
     <ClInclude Include="Starter.h" />
+    <ClInclude Include="TestBlas.h" />
     <ClInclude Include="TestLapack.h" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +120,7 @@
     <ClCompile Include="RNGTest.cpp" />
     <ClCompile Include="SSLTest.cpp" />
     <ClCompile Include="Starter.cpp" />
+    <ClCompile Include="TestBlas.cpp" />
     <ClCompile Include="TestLapack.cpp" />
   </ItemGroup>
   <ItemGroup>
