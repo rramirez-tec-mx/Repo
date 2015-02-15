@@ -1,5 +1,6 @@
 #include "BlasClass.h"
 #include <vector>
+
 using namespace std;
 
 extern "C" int dscal_(int *n, double *sa, double *sx, int *incx);
@@ -68,15 +69,10 @@ void BlasClass::ScaleAndSumVectorAndSquare()
 	//indexMin;
 }
 
-size_t BlasClass::ComputeDistanceAndReturnMax(double *X, double *Y, double *Z, int N, double xc, double yc, double zc, vector<double> & out)
+size_t BlasClass::ComputeDistanceAndReturnMax(double *X, double *Y, double *Z, int N, double xc, double yc, double zc, vector<double> & minusOne, vector<double> & out)
 {
 
-	vector<double> minusOne;
-	for (int i = 0; i < N; i++)
-		minusOne.push_back(-1);
 
-	out.resize(N);
-	memset(&out[0], 0, N*sizeof(double));
 	int incx = 1;
 	int incy = 1;
 
