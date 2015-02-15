@@ -1,13 +1,21 @@
 #include "BlasClass.h"
 #include <vector>
-
+#include <ppl.h>
 using namespace std;
-
+using namespace concurrency;
 extern "C" int dscal_(int *n, double *sa, double *sx, int *incx);
 extern "C" int daxpy_(int *n, double *sa, double *sx, int *incx, double *sy, int *incy);
 extern "C" int idamax_(int *n, double *sx, int *incx);
 
-
+void DAXPIDENOALTRI(int *n, double *sa, double *sx, int *incx, double *sy, int *incy)
+{
+	incx;
+	incy;
+	for (int i = 0; i < *n; i++)
+	{
+		sy[i] = sx[i] * sa[0] + sy[i];
+	}
+}
 
 BlasClass::BlasClass()
 {
@@ -71,8 +79,6 @@ void BlasClass::ScaleAndSumVectorAndSquare()
 
 size_t BlasClass::ComputeDistanceAndReturnMax(double *X, double *Y, double *Z, int N, double xc, double yc, double zc, vector<double> & minusOne, vector<double> & out)
 {
-
-
 	int incx = 1;
 	int incy = 1;
 
@@ -86,12 +92,14 @@ size_t BlasClass::ComputeDistanceAndReturnMax(double *X, double *Y, double *Z, i
 	daxpy_(&N, &zc, &minusOne[0], &incx, Z, &incy);
 
 	//elevamento al quadrato dei 3 vettori 
+	//parallel_for(size_t(0), (size_t)N, [&](size_t i)
 	for (int i = 0; i < N; i++)
 	{
 		X[i] *= X[i];
 		Y[i] *= Y[i];
 		Z[i] *= Z[i];
 	}
+	//});
 
 	//calcolo il vettore di uscita come somma delle componenti dei 3 vettori parziali
 	double uno = 1;
@@ -99,9 +107,41 @@ size_t BlasClass::ComputeDistanceAndReturnMax(double *X, double *Y, double *Z, i
 	daxpy_(&N, &uno, Y, &incx, &out[0], &incy);
 	daxpy_(&N, &uno, Z, &incx, &out[0], &incy);
 
-
-
 	auto indexMax = idamax_(&N, &out[0], &incx); //occhio che l'uscita è uno based
 	
 	return indexMax - 1;
+}
+
+size_t BlasClass::ComputeDistanceAndReturnMin(double *X, double *Y, double *Z, int N, double xc, double yc, double zc, vector<double> & minusOne, vector<double> & out)
+{
+	int incx = 1;
+	int incy = 1;
+
+	//calcolo del vettore [(x1-xc) (x2-xc) ... (xn-xc)] --> X
+	daxpy_(&N, &xc, &minusOne[0], &incx, X, &incy);
+
+	//calcolo del vettore [(y1-xc) (y2-xc) ... (yn-xc)] --> Y
+	daxpy_(&N, &yc, &minusOne[0], &incx, Y, &incy);
+
+	//calcolo del vettore [(z1-xc) (z2-xc) ... (zn-xc)] --> Z
+	daxpy_(&N, &zc, &minusOne[0], &incx, Z, &incy);
+
+	//elevamento al quadrato dei 3 vettori 
+	//parallel_for(size_t(0), (size_t)N, [&](size_t i)
+	for (int i = 0; i < N; i++)
+	{
+		X[i] *= X[i];
+		Y[i] *= Y[i];
+		Z[i] *= Z[i];
+	}
+	//});
+
+	//calcolo il vettore di uscita come somma delle componenti dei 3 vettori parziali
+	double uno = 1;
+	daxpy_(&N, &uno, X, &incx, &out[0], &incy);
+	daxpy_(&N, &uno, Y, &incx, &out[0], &incy);
+	daxpy_(&N, &uno, Z, &incx, &out[0], &incy);
+
+	auto smallest = std::min_element(std::begin(out), std::end(out));
+	return std::distance(std::begin(out), smallest);
 }
