@@ -145,3 +145,16 @@ size_t BlasClass::ComputeDistanceAndReturnMin(double *X, double *Y, double *Z, i
 	auto smallest = std::min_element(std::begin(out), std::end(out));
 	return std::distance(std::begin(out), smallest);
 }
+
+
+size_t BlasClass::ComputeDistanceAndReturnMinMale(double *X, double *Y, double *Z, int N, double xc, double yc, double zc, vector<double> & minusOne, vector<double> & out)
+{
+	minusOne;
+	for (int i = 0; i < N; i++)
+	{
+		out[i] = std::pow((xc - X[i]), 2) + std::pow((yc - Y[i]), 2) + std::pow((zc - Z[i]), 2);
+	}
+
+	auto smallest = std::min_element(std::begin(out), std::end(out));
+	return std::distance(std::begin(out), smallest);
+}
