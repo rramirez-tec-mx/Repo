@@ -9,3 +9,4 @@ SimplePOD::SimplePOD(void)
 SimplePOD::~SimplePOD(void)
 {
 }
+ 
