@@ -84,3 +84,8 @@ TEST_F(CHashingTest, CalculateSHA512Hash)
 
 	ASSERT_EQ(hashHex,L"198ec4853b4fa11a26a55c9d6ac1d06e6af9401772906c4313a0d39b31891ad07860379d699c28f3840ec26b1f3e1ce33448e095496b6299ffe8fc090d71fff6");
 }
+
+TEST_F(CHashingTest, CalculateMD5UsingOpenSSL)
+{
+
+}

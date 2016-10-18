@@ -480,3 +480,43 @@ TEST(CNGConfigFunctionTest, testUnsecureApiWithBug)
 
 	testRetValue(paneId);
 }
+
+
+TEST(CNGConfigFunctionTest, testRemoveDuplicate)
+{
+	vector<pair<double, double>> linea;
+
+	linea.push_back(make_pair(1, 1));
+	linea.push_back(make_pair(1, 3));
+	linea.push_back(make_pair(1, 1));
+	linea.push_back(make_pair(2, 1));
+	linea.push_back(make_pair(3, 1));
+	linea.push_back(make_pair(3, 3));
+	linea.push_back(make_pair(4, 1));
+	linea.push_back(make_pair(std::numeric_limits<double>::quiet_NaN(), std::numeric_limits<double>::quiet_NaN()));
+	vector<pair<double, double>>::iterator it;
+
+	it = unique(linea.begin(), linea.end(), [](pair<double, double> p1, pair<double, double> p2){
+		return p1.first == p2.first && p1.second == p2.second; 
+	});
+	linea.resize(distance(linea.begin(), it));
+}
+
+void launchFunction(string & s)
+{
+	s = "ciao";
+	throw std::exception();
+}
+
+TEST(CNGConfigFunctionTest, testtrycatch)
+{
+	string s;
+	try
+	{
+		launchFunction(s);
+	}
+	catch (...)
+	{
+		cout << "stringa " << s;
+	}
+}
