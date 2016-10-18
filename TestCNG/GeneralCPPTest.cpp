@@ -473,7 +473,7 @@ TEST(CNGConfigFunctionTest, testUnsecureApiWithBug)
 	int Count = 0;
 	LPCSTR line = " pane10 = 70 ciao ciao";
 #pragma warning(disable:4996) // attenzione al bug del % dopo il secondo %d se si usa secure api si nota..
-	if (_stscanf((LPCSTR)line, _T(" pane%d = %d%"), &paneId, &Count)) {}
+	if (_stscanf((LPCSTR)line, _T(" pane%d = %d"), &paneId, &Count)) {}
 	
 	ASSERT_EQ(paneId, 10);
 	ASSERT_EQ(Count, 70);

@@ -10,7 +10,7 @@ public:
 	~WindowsVersion();
 	std::map<size_t, bool> FillMapOfWindowsVersion();
 	
-	typedef enum WinVersion { WINXP_OR_GREATER = 0, 
+	enum WinVersion { WINXP_OR_GREATER = 0, 
 							  WINXP_SP1_OR_GREATER = 1,
 							  WINXP_SP2_OR_GREATER = 2,
 							  WINXP_SP3_OR_GREATER = 3,
