@@ -25,7 +25,7 @@ void CQoS2Manager::CreateHandle(HANDLE & QoSHandle)
 	{
 		char  msgbuf[200];
 		sprintf_s(msgbuf, "QOSCreateHandle failed. Error: %ld\n", GetLastError());
-		OutputDebugString(msgbuf);
+		OutputDebugStringA(msgbuf);
 
 	}
 }
@@ -38,7 +38,7 @@ void CQoS2Manager::CloseHandle(HANDLE & QoSHandle)
 		{
 			char  msgbuf[200];
 			sprintf_s(msgbuf, "QOSCloseHandle failed. Error: %ld\n", GetLastError());
-			OutputDebugString(msgbuf);
+			OutputDebugStringA(msgbuf);
 		}
 		else
 			QoSHandle = NULL;

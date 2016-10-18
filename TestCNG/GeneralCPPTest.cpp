@@ -76,10 +76,10 @@ TEST(CNGConfigFunctionTest, TestHash)
 	double p1[3] = {2.5,0.7,1.0};
 	double p2[3] = {2.5,0.7,1.5};
 
-   string s1,s2;
+   wstring s1,s2;
    
-   s1.assign((char*)&p1,len*sizeof(double));
-   s2.assign((char*)&p2,3*sizeof(double));
+   s1.assign((wchar_t*)&p1,len*sizeof(double));
+   s2.assign((wchar_t*)&p2,3*sizeof(double));
 
    use_facet< collate<_TCHAR> > ( loc ).hash (s1.data(), s1.data()+s1.length());
    use_facet< collate<_TCHAR> > ( loc ).hash (s2.data(), s2.data()+ s2.length());
@@ -87,12 +87,12 @@ TEST(CNGConfigFunctionTest, TestHash)
 
    CSimpleDataObject o1(2.5, 0.7, 1.0, 0, 7);
    CSimpleDataObject o2(2.5, 0.7, 1.5, 0, 0);
-   string s3, s4;
+   wstring s3, s4;
    s3.assign((_TCHAR*)&o1,sizeof(CSimpleDataObject));
    s4.assign((_TCHAR*)&o2,sizeof(CSimpleDataObject)); 
 
-   string s5 = s3+s4;
-   string s6 = s4+s3;
+   wstring s5 = s3+s4;
+   wstring s6 = s4+s3;
 
    for(int i =0;i< (int)s5.size(); i++)
    {
@@ -109,12 +109,12 @@ TEST(CNGConfigFunctionTest, TestHash)
 
 
 
-   char b1[100];
-   char b2[100];
-   sprintf_s(b1,"%f%f%f",p1[0], p1[1], p1[2]);
-   sprintf_s(b2,"%f%f",p2[0], p2[1]);
-   string s7(b1);
-   string s8(b2);
+   wchar_t b1[100];
+   wchar_t b2[100];
+   wprintf_s(b1,"%f%f%f",p1[0], p1[1], p1[2]);
+   wprintf_s(b2,"%f%f",p2[0], p2[1]);
+   wstring s7(b1);
+   wstring s8(b2);
    use_facet< collate<_TCHAR> > ( loc ).hash (s7.data(), s7.data()+ s7.length());
    use_facet< collate<_TCHAR> > ( loc ).hash (s8.data(), s8.data()+ s8.length());
       
@@ -471,9 +471,9 @@ TEST(CNGConfigFunctionTest, testUnsecureApiWithBug)
 {			
 	int paneId ;
 	int Count = 0;
-	LPCSTR line = " pane10 = 70 ciao ciao";
+	auto line = L" pane10 = 70 ciao ciao";
 #pragma warning(disable:4996) // attenzione al bug del % dopo il secondo %d se si usa secure api si nota..
-	if (_stscanf((LPCSTR)line, _T(" pane%d = %d"), &paneId, &Count)) {}
+	if (_stscanf((wchar_t*)line, _T(" pane%d = %d"), &paneId, &Count)) {}
 	
 	ASSERT_EQ(paneId, 10);
 	ASSERT_EQ(Count, 70);
