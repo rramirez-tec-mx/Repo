@@ -224,30 +224,30 @@ TEST(CNGConfigFunctionTest, TestCopyStdVector)
 	pod2 = pod1;
 }
 
-TEST(CNGConfigFunctionTest, DISABLED_TestMemCpyPerformance) 
-{
-	double *in;
-	vector<double> out1,out2;
-	CSimpleDataObject dobj;
-	size_t size = 3000;
-	CTimer timer;
-	in = new double[size];
-	memset(in, 0, size*sizeof(double));
-	out2.resize(size);	
-	timer.Start();
-	memcpy(&out2[0], in, size*sizeof(double));	
-	timer.GetElapsedTimeInMicros();
-	delete[] in;
-
-	in = new double[size];
-	memset(in, 0, size*sizeof(double));
-	out2.resize(size);
-	timer.Start();
-
-	dobj.X_aligned_memcpy_sse2(&out2[0], in, size*sizeof(double));
-	timer.GetElapsedTimeInMicros();
-	delete[] in;
-}
+//TEST(CNGConfigFunctionTest, DISABLED_TestMemCpyPerformance) 
+//{
+//	double *in;
+//	vector<double> out1,out2;
+//	CSimpleDataObject dobj;
+//	size_t size = 3000;
+//	CTimer timer;
+//	in = new double[size];
+//	memset(in, 0, size*sizeof(double));
+//	out2.resize(size);	
+//	timer.Start();
+//	memcpy(&out2[0], in, size*sizeof(double));	
+//	timer.GetElapsedTimeInMicros();
+//	delete[] in;
+//
+//	in = new double[size];
+//	memset(in, 0, size*sizeof(double));
+//	out2.resize(size);
+//	timer.Start();
+//
+//	dobj.X_aligned_memcpy_sse2(&out2[0], in, size*sizeof(double));
+//	timer.GetElapsedTimeInMicros();
+//	delete[] in;
+//}
 
 TEST(CNGConfigFunctionTest, TestPerf1) 
 {
@@ -424,21 +424,21 @@ TEST(CNGConfigFunctionTest, TestCopyStringPerf)
 }
 
 
-TEST(CNGConfigFunctionTest, TestSScanf_dest_lower_than_source_secure)
-{
-	char *src = "ciaociao";
-	char out[4];
-	sscanf_s(src, "%s", out, _countof(out));
-	ASSERT_STREQ(out, "");
-}
-
-TEST(CNGConfigFunctionTest, TestSScanf_dest_bigger_than_source_secure)
-{
-	char *src = "ciaociao";
-	char out[20];
-	sscanf_s(src, "%s", out, _countof(out));
-	ASSERT_STREQ(out, "ciaociao");
-}
+//TEST(CNGConfigFunctionTest, TestSScanf_dest_lower_than_source_secure)
+//{
+//	char *src = "ciaociao";
+//	char out[4];
+//	sscanf_s(src, "%s", out, _countof(out));
+//	ASSERT_STREQ(out, "");
+//}
+//
+//TEST(CNGConfigFunctionTest, TestSScanf_dest_bigger_than_source_secure)
+//{
+//	char *src = "ciaociao";
+//	char out[20];
+//	sscanf_s(src, "%s", out, _countof(out));
+//	ASSERT_STREQ(out, "ciaociao");
+//}
 
 TEST(CNGConfigFunctionTest, TestSingleton)
 {

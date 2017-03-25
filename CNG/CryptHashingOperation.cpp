@@ -47,7 +47,7 @@ vector<unsigned char> CCryptHashingOperation::CreateHash(const wstring & message
 	NTSTATUS res;
 	
 	vector<unsigned char>  pbBufferCast = ConvertWStringToArrayOfByte(messageToHash);
-	int lenBuffer = messageToHash.size();
+	auto lenBuffer = (ULONG)messageToHash.size();
 
 
 	res = BCryptOpenAlgorithmProvider(&phAlgorithm, hashAlgType.c_str(), NULL, 0);

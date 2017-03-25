@@ -24,7 +24,7 @@ TEST_F(CryptTest, CryptEncryptWithDESFromHashSecret)
 	ULONG lenCypherText=0;
 	wstring passPhrase = L"abbCCC";
 		
-	size_t sizePlainText = m_plainText.size();
+	auto sizePlainText = (int)m_plainText.size();
 	vector<BYTE> plainTextRawBYTE;
 	plainTextRawBYTE.resize(sizePlainText+1);
 	

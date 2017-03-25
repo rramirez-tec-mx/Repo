@@ -108,11 +108,11 @@ void LapackClass::calcMatrixProduct(CMatrix& A, vector<double> & B, vector<doubl
 	double alpha = 1.0;
 	double beta = 0.0;
 
-	int rowsOfMatrixA  = A.m_Data.at(0).size();
-	int columnsOfMatrixA  = A.m_Data.size();
-	int lda = max(A.m_Data.at(0).size(),A.m_Data.size());
+	auto rowsOfMatrixA  = (int)A.m_Data.at(0).size();
+	auto columnsOfMatrixA  = (int)A.m_Data.size();
+	auto lda = (int)max(A.m_Data.at(0).size(),A.m_Data.size());
 							   		
-	int ldc = rowsOfMatrixA;
+	auto ldc = rowsOfMatrixA;
 
 	C.assign(rowsOfMatrixA*columnsOfMatrixB,0);
 	

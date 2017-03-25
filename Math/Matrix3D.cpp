@@ -55,7 +55,7 @@ void CalcBracketingIndexInVector(const vector<double> & aVector, double value, s
 	}
 }
 
-int CalculateIndexInsideMatrixStoredAsFlatVector(bool isRowMajor, int xIndex, int yIndex, int xSize, int ySize)
+ptrdiff_t CalculateIndexInsideMatrixStoredAsFlatVector(bool isRowMajor, ptrdiff_t xIndex, ptrdiff_t yIndex, ptrdiff_t xSize, ptrdiff_t ySize)
 {
 	if(isRowMajor)
 	{
@@ -105,13 +105,13 @@ double CMatrix3D::Interp3(const vector<vector<double>> & matrix3D, const vector<
 	double z11_1, z12_1, z21_1,z22_1;
 	double z11_2, z12_2, z21_2, z22_2;
 	
-	int currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,startYIndex,xBreakPoints.size(), yBreakPoints.size());
+	auto currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,startYIndex,xBreakPoints.size(),  yBreakPoints.size());
 	z11_1 = matrix2dBracket1[currentIndex];
 	z11_2 = matrix2dBracket2[currentIndex];
-	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,endXIndex,startYIndex,xBreakPoints.size(), yBreakPoints.size());
+	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,endXIndex,startYIndex, (int)xBreakPoints.size(), (int)yBreakPoints.size());
 	z21_1 = matrix2dBracket1[currentIndex];
 	z21_2 = matrix2dBracket2[currentIndex];
-	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,endYIndex,xBreakPoints.size(), yBreakPoints.size());
+	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,startXIndex,endYIndex, (int)xBreakPoints.size(), (int)yBreakPoints.size());
 	z12_1 = matrix2dBracket1[currentIndex];
 	z12_2 = matrix2dBracket2[currentIndex];
 	currentIndex = CalculateIndexInsideMatrixStoredAsFlatVector(isRowMajorOrder,endXIndex,endYIndex,xBreakPoints.size(), yBreakPoints.size());
