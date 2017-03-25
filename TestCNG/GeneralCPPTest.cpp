@@ -224,7 +224,7 @@ TEST(CNGConfigFunctionTest, TestCopyStdVector)
 	pod2 = pod1;
 }
 
-TEST(CNGConfigFunctionTest, TestMemCpyPerformance) 
+TEST(CNGConfigFunctionTest, DISABLED_TestMemCpyPerformance) 
 {
 	double *in;
 	vector<double> out1,out2;

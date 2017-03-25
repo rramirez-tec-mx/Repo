@@ -20,8 +20,8 @@ TEST_F(CKeyStorageManagerTest, EnumerateStorageProviderTest)
 	manager.EnumStorageProvider(listOfProvider);
 
 	ASSERT_EQ(listOfProvider[0], MS_KEY_STORAGE_PROVIDER);
-	ASSERT_EQ(listOfProvider[1], MS_PLATFORM_KEY_STORAGE_PROVIDER);
-	ASSERT_EQ(listOfProvider[2], MS_SMART_CARD_KEY_STORAGE_PROVIDER);
+	ASSERT_EQ(listOfProvider[2], MS_PLATFORM_KEY_STORAGE_PROVIDER);
+	ASSERT_EQ(listOfProvider[3], MS_SMART_CARD_KEY_STORAGE_PROVIDER);
 }
 
 TEST_F(CKeyStorageManagerTest, OpenStorageProviderTest) 

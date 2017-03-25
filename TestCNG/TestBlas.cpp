@@ -67,8 +67,5 @@ TEST(TestBlas, testComputeDistanceAndReturnMin)
 	timer.Stop();
 	cout << "index min lento " << index2 << endl;
 
-
-	getchar();
-
 }
 
