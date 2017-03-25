@@ -475,6 +475,7 @@ TEST(CNGConfigFunctionTest, testUnsecureApiWithBug)
 #pragma warning(disable:4996) // attenzione al bug del % dopo il secondo %d se si usa secure api si nota..
 	if (_stscanf((wchar_t*)line, _T(" pane%d = %d"), &paneId, &Count)) {}
 	
+
 	ASSERT_EQ(paneId, 10);
 	ASSERT_EQ(Count, 70);
 
