@@ -3,26 +3,8 @@
 #include <vector>
 #include "Matrix.h"
 #include <algorithm>
+#include <mkl.h>
 using namespace std;
-
-
-extern "C" void dgesv_(const int *N, const int *nrhs, double *A, const int *lda, int
-	*ipiv, double *b, const int *ldb, int *info );
-
-extern "C" void dgels_(const char *trans, const int *M, const int *N, const int *nrhs,
-    double *A, const int *lda, double *b, const int *ldb, double *work,
-    const int * lwork, int *info); 
-
-extern "C" void dgemm_(const char *transA, const char *transB, const int *M, const int *N, const int *K, 
-	double *alpha, double *a, const int *lda, double *b, const int *ldb, double *beta,
-	double *c,  const int *ldc);
-
-
-extern "C" void dgetri_(int* n, double* a, int* lda,int* ipiv, double* work, int* lwork, int* info );
-
-extern "C" void dgetrf_(int* m, int* n, double* a, int* lda,int* ipiv, int* info);
-
-
 
 LapackClass::LapackClass(void)
 {
@@ -45,7 +27,7 @@ void LapackClass::calcMatrix()
     int ldb = 3;
     int info;
     
-    dgesv_(&N, &nrhs, A, &lda, ipiv, b, &ldb, &info);
+	dgesv(&N, &nrhs, A, &lda, ipiv, b, &ldb, &info);
 
     if(info == 0) /* succeed */
 	printf("The solution is %lf %lf %lf\n", b[0], b[1], b[2]);
@@ -92,7 +74,7 @@ void LapackClass::calcMatrix2(double *matrixC)
 							   		
 	int ldc = 3;    
 	
-	 dgemm_(&notrans, &notrans, &rowsOfMatrixA, &columnsOfMatrixB,
+	cblas_dgemm(notrans, &notrans, &rowsOfMatrixA, &columnsOfMatrixB,
 		 &rowsOfMatrixA, &alpha, &matrixA[0], &lda, 
 		 &matrixB[0], &rowsOfMatrixA, &beta, matrixC, &ldc);	
 }
