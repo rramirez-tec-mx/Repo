@@ -46,7 +46,6 @@ void LapackClass::calcMatrix2(double *matrixC)
 			
 	double alpha = 1.0;
 	double beta = 0.0;
-	char notrans = 'N';
 	int lda = 3;    
 
 	int rowsOfMatrixA = 3;
@@ -64,8 +63,8 @@ void LapackClass::calcMatrix2(double *matrixC)
 	matrixA.push_back(5);
 	matrixA.push_back(3);
 	matrixA.push_back(7);
-     	  
-	
+     
+	int columnsOfMatrixA = (int)matrixA.size();
 	int columnsOfMatrixB = 1;	
 	vector<double> matrixB;
 	matrixB.push_back(1);
@@ -74,13 +73,13 @@ void LapackClass::calcMatrix2(double *matrixC)
 							   		
 	int ldc = 3;    
 	
-	cblas_dgemm(notrans, &notrans, &rowsOfMatrixA, &columnsOfMatrixB,
-		 &rowsOfMatrixA, &alpha, &matrixA[0], &lda, 
-		 &matrixB[0], &rowsOfMatrixA, &beta, matrixC, &ldc);	
+	cblas_dgemm(CblasColMajor, CblasNoTrans, CblasNoTrans, rowsOfMatrixA,
+		columnsOfMatrixB, columnsOfMatrixA, alpha, matrixA.data(), lda, matrixB.data(),
+		rowsOfMatrixA, beta, matrixC, ldc);
 }
 
 
-void LapackClass::calcMatrixProduct(CMatrix& A, vector<double> & B, vector<double> & C, int columnsOfMatrixB, char transposeA, char transposeB)
+void LapackClass::calcMatrixProduct(CMatrix& A, vector<double> & B, vector<double> & C, int columnsOfMatrixB, CBLAS_TRANSPOSE transposeA, CBLAS_TRANSPOSE transposeB)
 {
 
 	//perform C = alpha*A*B + beta*C. 
@@ -105,10 +104,9 @@ void LapackClass::calcMatrixProduct(CMatrix& A, vector<double> & B, vector<doubl
 			matrixAInternal[i*rowsOfMatrixA+j] = A.m_Data[i][j];
 		}
 
-	 dgemm_(&transposeA, &transposeB, &rowsOfMatrixA, &columnsOfMatrixB,
-		 &rowsOfMatrixA, &alpha,matrixAInternal, &lda, 
-		 &B[0], &rowsOfMatrixA, &beta, &C[0], &ldc);	
-
+	 cblas_dgemm(CblasColMajor, transposeA, transposeB, rowsOfMatrixA,
+		 columnsOfMatrixB, columnsOfMatrixA, alpha, matrixAInternal, lda, B.data(),
+		 rowsOfMatrixA, beta, C.data(), ldc);
 
 
 	 delete[] matrixAInternal;

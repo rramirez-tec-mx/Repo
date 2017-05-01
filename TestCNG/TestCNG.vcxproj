@@ -216,6 +216,9 @@
     <ProjectReference Include="..\Log\Log.vcxproj">
       <Project>{b8c8d320-42c8-46e5-bdce-c8dd919d2d0c}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Math\Math.vcxproj">
+      <Project>{fb3cb6f9-e02f-43ed-b8a0-586e3aa13838}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\QoS2\QoS2.vcxproj">
       <Project>{91b956b4-c683-4b62-bd7e-185f3229dd2c}</Project>
     </ProjectReference>
