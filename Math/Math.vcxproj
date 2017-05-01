@@ -110,7 +110,7 @@ xcopy /y ..\3rdparty\MinGW\libquadmath-0.dll $(SolutionDir)$(ConfigurationName)<
       <TreatWarningAsError>true</TreatWarningAsError>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>MATH_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2017.2.187\windows\mkl\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -161,6 +161,7 @@ xcopy /y ..\3rdparty\MinGW\libquadmath-0.dll $(SolutionDir)$(ConfigurationName)<
       <TreatWarningAsError>true</TreatWarningAsError>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PreprocessorDefinitions>MATH_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

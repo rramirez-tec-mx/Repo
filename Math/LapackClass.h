@@ -2,7 +2,7 @@
 #include "Matrix.h"
 #include <vector>
 #include "MathApi.h"
-#include "C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2017.2.187\windows\mkl\include\mkl_cblas.h"
+#include "mkl_cblas.h"
 
 class MATH_EXPORTS_API LapackClass
 {

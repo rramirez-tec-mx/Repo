@@ -3,7 +3,7 @@
 #include <vector>
 #include "Matrix.h"
 #include <algorithm>
-#include <mkl.h>
+#include "mkl.h"
 using namespace std;
 
 LapackClass::LapackClass(void)
