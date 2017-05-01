@@ -164,15 +164,12 @@ xcopy /y ..\3rdparty\MinGW\libquadmath-0.dll $(SolutionDir)$(ConfigurationName)<
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\3rdparty\BLAS\$(Configuration);..\3rdparty\LAPACK\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>liblapack.lib;libblas.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>mkl_core_dll.lib;mkl_intel_lp64_dll.lib;mkl_sequential_dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y ..\3rdparty\BLAS\$(ConfigurationName)\libblas.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\LAPACK\$(ConfigurationName)\liblapack.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\MinGW\libgcc_s_dw2-1.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\MinGW\libgfortran-3.dll $(SolutionDir)$(ConfigurationName)
-xcopy /y ..\3rdparty\MinGW\libquadmath-0.dll $(SolutionDir)$(ConfigurationName)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -121,6 +121,12 @@
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <SubSystem>Console</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_sequential.dll $(SolutionDir)$(Platform)\$(Configuration)
+xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_core.dll $(SolutionDir)$(Platform)\$(Configuration)
+xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_def.dll $(SolutionDir)$(Platform)\$(Configuration)
+xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_avx2.dll $(SolutionDir)$(Platform)\$(Configuration)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -152,7 +158,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>C:\Build-OpenSSL-VC-64\include;..\3rdparty\gmock-1.7.0\gtest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Build-OpenSSL-VC-64\include;..\3rdparty\gmock-1.7.0\gtest\include;..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -169,6 +175,12 @@
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <Profile>true</Profile>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_sequential.dll $(SolutionDir)$(Platform)\$(Configuration)
+xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_core.dll $(SolutionDir)$(Platform)\$(Configuration)
+xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_def.dll $(SolutionDir)$(Platform)\$(Configuration)
+xcopy /y ..\3rdparty\IntelSWTools\2017.2.187\windows\mkl\dll\mkl\mkl_avx2.dll $(SolutionDir)$(Platform)\$(Configuration)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CNGConfigFunctionTest.h" />
