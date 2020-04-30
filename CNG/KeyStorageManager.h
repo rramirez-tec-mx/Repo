@@ -3,7 +3,7 @@
 #include "Ncrypt.h"
 #include "CNGApi.h"
 #include <vector>
-
+#include <string>
 //MS_KEY_STORAGE_PROVIDER         L"Microsoft Software Key Storage Provider"
 //MS_SMART_CARD_KEY_STORAGE_PROVIDER L"Microsoft Smart Card Key Storage Provider"
 //MS_PLATFORM_KEY_STORAGE_PROVIDER   L"Microsoft Platform Crypto Provider"

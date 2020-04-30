@@ -1,7 +1,7 @@
 #include "SSLTest.h"
 #include <windows.h>
 #include <bcrypt.h>
-
+#pragma warning(disable:4389)
 using namespace std;
 
 SSLTest::SSLTest(void)
